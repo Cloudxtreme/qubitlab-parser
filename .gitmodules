@@ -1,0 +1,3 @@
+[submodule "lib/qclib"]
+	path = lib/qclib
+	url = git@github.com:rnowotniak/qclib.git
