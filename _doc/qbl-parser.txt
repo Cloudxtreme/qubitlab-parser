@@ -1,0 +1,20 @@
+# QBL Parser
+
+    TODO:
+        + przygotowanie wszystkich potrzebnych metod klasy Identation
+            + init_indentation_values()
+            + get_indentation_level()
+            + check_indentation()
+            + set_expected_indentation()
+        + przygotowanie wszystkich potrzebnych metod klasy Command
+        + przygotowanie wszystkich potrzebnych metod klasy QblMemory
+        + przygotowanie wszystkich potrzebnych metod klasy Parser
+            + parse_file - pobiera 
+            + parse_command - (na razie pusta metoda - w przyszłości będzie używana do trybu command-linowego)
+
+    STRUCTURE:
+        + class Parser - główna klasa parsera, pobiera plik i zamienia go na strukturę obiektów
+        + class Identation - kontrolowanie wcięć
+        + class Command - identyfikowanie poleceń i wyciąganie z nich parametrów
+        + class QblMemory - zarządzanie obiektami symulacji
+    
