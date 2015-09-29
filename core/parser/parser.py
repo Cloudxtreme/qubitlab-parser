@@ -5,7 +5,7 @@ from .identation import *
 
 class Parser:
 
-    # parses code and adds new objects to simulation_objects
+    # parses code and adds new objects to qbl_memory
     def parse_code(self, code, qbl_memory):
 
         identation = Identation()
@@ -13,12 +13,6 @@ class Parser:
 
         # while lines
             # line = line without text after '#'
-            #
-
-        # determine indentation
-            # find first line with code after white spaces
-                # if white spaces are mixed
-                    # throw exception
-                # if
+            # ...
 
         return qbl_memory
