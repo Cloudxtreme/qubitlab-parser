@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-class QblMemory:
+class CodeReader:
 
     def example(self):
         print ''

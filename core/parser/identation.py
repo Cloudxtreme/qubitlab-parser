@@ -3,6 +3,7 @@
 
 import re
 
+
 class Identation:
 
     def init_indentation_values(self):
@@ -13,9 +14,7 @@ class Identation:
         self.expected_indentation_level = 0
         self.current_line_number = 0
 
-
     def get_indentation_level(self, line):
-
         m = re.search('^(\t| )*', line)
         line_identation = m.group(0)
 
@@ -25,7 +24,7 @@ class Identation:
         if spaces_numb > 0 and tabs_numb > 0:
             raise Exception('Mixed identations. Line: ' + self.current_line_number)
         elif spaces_numb > 0:
-            if self.indentation_type == None:
+            if self.indentation_type is None:
                 self.indentation_type = 'spaces'
             if self.indentation_type == 'spaces':
                 if spaces_numb % self.indentation_width != 0:
@@ -36,7 +35,7 @@ class Identation:
             else:
                 raise Exception('Mixed identations. Line: ' + self.current_line_number)
         elif tabs_numb > 0:
-            if self.indentation_type == None:
+            if self.indentation_type is None:
                 indentation_type = 'tabs'
             if indentation_type == 'tabs':
                 indentation_level = tabs_numb
@@ -47,7 +46,6 @@ class Identation:
             indentation_level = 0
             return indentation_level
 
-
     def valid_identation(self):
         if self.expected_indentation_type == 'max':
             if self.expected_indentation_level < self.current_indentation_level:
@@ -55,14 +53,11 @@ class Identation:
         elif self.expected_indentation_level < self.current_indentation_level:
             raise Exception('Identation error. Line: ' + self.current_line_number)
 
-
     def set_current_level(self, level):
         self.current_indentation_level = level
 
-
     def set_current_line_number(self, current_line_number):
         self.current_line_number = current_line_number
-
 
     def set_expected_indentation(self, expected_indentation_type, expected_indentation_level):
         self.expected_indentation_type = expected_indentation_type

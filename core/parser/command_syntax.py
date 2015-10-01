@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-class Command:
+class CommandSyntax:
 
     def example(self):
         print ''

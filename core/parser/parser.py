@@ -12,7 +12,7 @@ class Parser:
         identation.init_indentation_values()
 
         # while lines
-            # line = line without text after '#'
-            # ...
+        #   line = line without text after '#'
+        #   ...
 
         return qbl_memory
