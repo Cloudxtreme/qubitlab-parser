@@ -26,6 +26,7 @@ class Identation:
         elif spaces_numb > 0:
             if self.indentation_type is None:
                 self.indentation_type = 'spaces'
+                self.indentation_width = spaces_numb
             if self.indentation_type == 'spaces':
                 if spaces_numb % self.indentation_width != 0:
                     raise Exception('Identation error. Line: ' + self.current_line_number)
