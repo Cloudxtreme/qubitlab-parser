@@ -12,6 +12,14 @@ class Actions:
         pass
 
     @staticmethod
+    def list_action():
+        print "List of objects in QBL memory..."
+
+    @staticmethod
+    def info_action():
+        print "Info about object in QBL memory..."
+
+    @staticmethod
     def graph_action():
         print "Display graphical scheme of circuit..."
 
@@ -55,6 +63,8 @@ class Actions:
         print "\tCOMMANDS:"
         print "\thelp                                       Show help."
         print
+        print "\tlist <file_name>.qbl                       List of objects in QBL memory."
+        print "\tinfo <object_name> <file_name>.qbl         Info about object in QBL memory."
         print "\tgraph <circiut_name> <file_name>.qbl       Display graphical scheme of circuit.."
         print "\trun <circuit_name> <file_name>.qbl         Start running the simulation."
         print
@@ -69,6 +79,8 @@ class Actions:
         print "\tquit                       Exit the program."
         print "\thelp                       Show help."
         print
+        print "\tlist                       List of objects in QBL memory."
+        print "\tinfo <object_name>         Info about objecti in QBL memory."
         print "\timport <filename>.qbl      Import data from QBL file to QBL memory."
         print "\tgraph <circiut_name>       Display graphical scheme of circuit.."
         print "\trun <circiut_name>         Start running the simulation."
@@ -98,6 +110,12 @@ class Actions:
                 break
             if command == 'import':
                 self.import_action(command_args)
+                continue
+            if command == 'list':
+                self.graph_action()
+                continue
+            if command == 'info':
+                self.graph_action()
                 continue
             if command == 'graph':
                 self.graph_action()

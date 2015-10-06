@@ -11,7 +11,7 @@ from actions import Actions
 class Router:
 
     def __init__(self):
-        self.action = 'dialog'
+        self.action = ''
         self.output = ''
         self.args = []
 
@@ -31,10 +31,10 @@ class Router:
             self.action = self.args.pop(0)
 
         if self.output != '':
-            if self.action != 'dialog':
+            if self.action != '':
                 sys.stdout = open(self.output, 'w')
             else:
-                print "[WARNING] In dialog mode '-o' and '--output' option is ignored."
+                print "[WARNING] In dialog mode '-o' and '--output' options are ignored."
 
     def call_action(self):
         actions = Actions()
@@ -52,7 +52,7 @@ class Router:
             actions.run_action()
         elif self.action == 'help':
             actions.help_action()
-        elif self.action == 'dialog' or self.action == '':
+        elif self.action == '':
             actions.dialog_action()
         else:
             actions.error_action()
