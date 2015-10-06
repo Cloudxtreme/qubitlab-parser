@@ -44,14 +44,34 @@ class Actions:
     def help_action():
         print
         print "-- HELP --"
-        print "Available options:"
+        print
+        print "Usage:"
+        print "python qubitlab.py [OPTIONS] [COMMAND]"
+        print
+        print "\tOPTIONS:"
+        print "\t--output <file_path>                       Output file."
+        print "\t-o <file_path>                             The same as \"--output\"."
+        print
+        print "\tCOMMANDS:"
+        print "\thelp                                       Show help."
+        print
+        print "\tgraph <circiut_name> <file_name>.qbl       Display graphical scheme of circuit.."
+        print "\trun <circuit_name> <file_name>.qbl         Start running the simulation."
+        print
+
+    @staticmethod
+    def dialog_help_action():
+        print
+        print "-- HELP --"
+        print
+        print "Available commands:"
         print
         print "\tquit                       Exit the program."
-        print "\thelp                       Show available options."
+        print "\thelp                       Show help."
         print
         print "\timport <filename>.qbl      Import data from QBL file to QBL memory."
-        print "\tgraph                      Display graphical scheme of circuit.."
-        print "\trun                        Start running the simulation."
+        print "\tgraph <circiut_name>       Display graphical scheme of circuit.."
+        print "\trun <circiut_name>         Start running the simulation."
         print
 
     def dialog_action(self):
@@ -86,7 +106,7 @@ class Actions:
                 self.run_action()
                 continue
             if command == 'help':
-                self.help_action()
+                self.dialog_help_action()
                 continue
 
             print "[ERROR] Incorrect command!"
