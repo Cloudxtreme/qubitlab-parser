@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import re
+import os
 
 
 class Actions:
@@ -13,6 +15,27 @@ class Actions:
     def graph_action():
         print "Display graphical scheme of circuit..."
 
+    def import_action(self, args):
+        if len(args) != 1:
+            self.show_params_numb_error('import')
+            return False
+
+        file = args[0]
+        if file:
+            if os.path.isfile(file):
+                if file.endswith('.qbl'):
+                    self.file = file
+                else:
+                    print ("[ERROR] '%s' must have '.qbl' extension." % file)
+                    return False
+            else:
+                print ("[ERROR] '%s' is incorrect path to qbl file." % file)
+                return False
+
+
+        print "Import data from QBL file to QBL memory..."
+        return True
+
     @staticmethod
     def run_action():
         print "Start running the simulation..."
@@ -23,11 +46,12 @@ class Actions:
         print "-- HELP --"
         print "Available options:"
         print
-        print "\tquit - Exit the program."
-        print "\thelp - Show available options."
+        print "\tquit                       Exit the program."
+        print "\thelp                       Show available options."
         print
-        print "\tgraph - Display graphical scheme of circuit.."
-        print "\trun - Start running the simulation."
+        print "\timport <filename>.qbl      Import data from QBL file to QBL memory."
+        print "\tgraph                      Display graphical scheme of circuit.."
+        print "\trun                        Start running the simulation."
         print
 
     def dialog_action(self):
@@ -41,26 +65,39 @@ class Actions:
         while 1:
             try:
                 sys.stdout.write("qbl> ")
-                line = sys.stdin.readline().strip()
+                command_line = sys.stdin.readline().strip()
+                command_items = re.split('\s+', command_line)
+                if len(command_items) == 0:
+                    continue;
+                command = command_items.pop(0).lower()
+                command_args = command_items
             except KeyboardInterrupt:
                 break
 
-            if line.lower() == 'quit':
+            if command == 'quit':
                 break
-
-            elif line.lower() == 'graph':
+            if command == 'import':
+                self.import_action(command_args)
+                continue
+            if command == 'graph':
                 self.graph_action()
-
-            elif line.lower() == 'run':
+                continue
+            if command == 'run':
                 self.run_action()
-
-            elif line.lower() == 'help':
+                continue
+            if command == 'help':
                 self.help_action()
-            else:
-                print "[ERROR] Incorrect command!"
-                print "Type 'help' to show available options."
+                continue
+
+            print "[ERROR] Incorrect command!"
+            print "Type 'help' to show available options."
 
     @staticmethod
     def error_action():
         print "[ERROR] Incorrect action."
         sys.exit(2)
+
+    @staticmethod
+    def show_params_numb_error(command):
+        print "[ERROR] Incorrect number of parameters for command \"%s\"" % command
+        print "Type 'help' to show available options."

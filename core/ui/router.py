@@ -13,7 +13,7 @@ class Router:
     def __init__(self):
         self.action = 'dialog'
         self.output = ''
-        self.file = ''
+        self.args = []
 
     def get_params(self, argv):
         try:
@@ -35,17 +35,7 @@ class Router:
                 print "[WARNING] In dialog mode '-o' and '--output' option is ignored."
 
         if len(args) > 0:
-            file = args[0]
-            if file:
-                if os.path.isfile(file):
-                    if file.endswith('.qbl'):
-                        self.file = file
-                    else:
-                        print ("[ERROR] '%s' must have '.qbl' extension." % file)
-                        sys.exit(2)
-                else:
-                    print ("[ERROR] '%s' is incorrect path to qbl file." % file)
-                    sys.exit(2)
+            self.args = args
 
     def call_action(self):
         actions = Actions()
@@ -55,6 +45,11 @@ class Router:
         elif self.action == 'info':
             actions.info_action()
         elif self.action == 'run':
+            if len(self.args) == 0:
+                print "Parameter with <filename>.qbl is required."
+                sys.exit(2)
+            if False == actions.import_action([self.args[0]]):
+                sys.exit(2)
             actions.run_action()
         elif self.action == 'help':
             actions.help_action()
