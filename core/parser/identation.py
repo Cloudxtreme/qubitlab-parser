@@ -10,8 +10,8 @@ class Identation:
         self.indentation_type = None                # None or 'tab' or 'spaces'
         self.indentation_width = 0
         self.current_indentation_level = 0
-        self.excepted_indentation_type = 'max'      # 'max' or 'equal'
-        self.excepted_indentation_level = 0
+        self.expected_indentation_type = 'max'      # 'max' or 'equal'
+        self.expected_indentation_level = 0
         self.current_line_number = 0
 
     def get_indentation_level(self, line):
@@ -48,10 +48,10 @@ class Identation:
             return indentation_level
 
     def valid_identation(self):
-        if self.excepted_indentation_type == 'max':
-            if self.excepted_indentation_level < self.current_indentation_level:
+        if self.expected_indentation_type == 'max':
+            if self.expected_indentation_level < self.current_indentation_level:
                 raise Exception('Identation error. Line: ' + self.current_line_number)
-        elif self.excepted_indentation_level < self.current_indentation_level:
+        elif self.expected_indentation_level < self.current_indentation_level:
             raise Exception('Identation error. Line: ' + self.current_line_number)
 
     def set_current_level(self, level):
@@ -60,6 +60,6 @@ class Identation:
     def set_current_line_number(self, current_line_number):
         self.current_line_number = current_line_number
 
-    def set_excepted_indentation(self, excepted_indentation_type, excepted_indentation_level):
-        self.excepted_indentation_type = excepted_indentation_type
-        self.excepted_indentation_level = excepted_indentation_level
+    def set_expected_indentation(self, expected_indentation_type, expected_indentation_level):
+        self.expected_indentation_type = expected_indentation_type
+        self.expected_indentation_level = expected_indentation_level
