@@ -128,7 +128,7 @@ class Actions:
                 continue
 
             print "[ERROR] Incorrect command!"
-            print "Type 'help' to show available options."
+            print "Type 'help' to show available commands."
 
     @staticmethod
     def error_action():
@@ -138,4 +138,4 @@ class Actions:
     @staticmethod
     def show_params_numb_error(command):
         print "[ERROR] Incorrect number of parameters for command \"%s\"" % command
-        print "Type 'help' to show available options."
+        print "Type 'help' to show available commands."

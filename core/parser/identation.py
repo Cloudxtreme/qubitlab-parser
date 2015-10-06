@@ -60,6 +60,6 @@ class Identation:
     def set_current_line_number(self, current_line_number):
         self.current_line_number = current_line_number
 
-    def set_expected_indentation(self, expected_indentation_type, expected_indentation_level):
+    def set_excepted_indentation(self, expected_indentation_type, expected_indentation_level):
         self.expected_indentation_type = expected_indentation_type
         self.expected_indentation_level = expected_indentation_level
