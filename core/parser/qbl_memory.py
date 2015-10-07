@@ -5,4 +5,4 @@
 class QblMemory:
 
     def example(self):
-        print ''
+        pass

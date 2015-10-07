@@ -5,4 +5,4 @@
 class CommandSyntax:
 
     def example(self):
-        print ''
+        pass

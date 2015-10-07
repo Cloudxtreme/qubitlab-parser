@@ -5,4 +5,4 @@
 class CodeReader:
 
     def example(self):
-        print ''
+        pass
