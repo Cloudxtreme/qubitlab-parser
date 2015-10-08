@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import re
 import os
+
+from core.parser.parser import *
 
 
 class Actions:
 
-    def __init__(self):
-        pass
+    def __init__(self, qbl_memory):
+        self.qbl_memory = qbl_memory
 
     @staticmethod
     def list_action():
@@ -40,8 +41,9 @@ class Actions:
                 print ("[ERROR] '%s' is incorrect path to qbl file." % file)
                 return False
 
+        parser = Parser()
+        parser.parse_code(file, None)
 
-        print "Import data from QBL file to QBL memory..."
         return True
 
     @staticmethod

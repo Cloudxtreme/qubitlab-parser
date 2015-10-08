@@ -1,17 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import sys
 import getopt
-
-from actions import Actions
 
 
 class Router:
 
-    def __init__(self):
-        self.action = ''
+    def __init__(self, actions):
+        self.actions = actions
+        self.current_action = ''
         self.output = ''
         self.args = []
 
@@ -28,31 +26,30 @@ class Router:
 
         if len(args) > 0:
             self.args = args
-            self.action = self.args.pop(0)
+            self.current_action = self.args.pop(0)
 
         if self.output != '':
-            if self.action != '':
+            if self.current_action != '':
                 sys.stdout = open(self.output, 'w')
             else:
                 print "[WARNING] In dialog mode '-o' and '--output' options are ignored."
 
     def call_action(self):
-        actions = Actions()
 
-        if self.action == 'list':
-            actions.list_action()
-        elif self.action == 'info':
-            actions.info_action()
-        elif self.action == 'run':
+        if self.current_action == 'list':
+            self.actions.list_action()
+        elif self.current_action == 'info':
+            self.actions.info_action()
+        elif self.current_action == 'run':
             if len(self.args) < 2:
-                actions.show_params_numb_error('run')
+                self.actions.show_params_numb_error('run')
                 sys.exit(2)
-            if False == actions.import_action([self.args[1]]):
+            if False == self.actions.import_action([self.args[1]]):
                 sys.exit(2)
-            actions.run_action()
-        elif self.action == 'help':
-            actions.help_action()
-        elif self.action == '':
-            actions.dialog_action()
+            self.actions.run_action()
+        elif self.current_action == 'help':
+            self.actions.help_action()
+        elif self.current_action == '':
+            self.actions.dialog_action()
         else:
-            actions.error_action()
+            self.actions.error_action()

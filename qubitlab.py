@@ -4,11 +4,16 @@
 import sys
 
 from core.ui.router import Router
+from core.ui.actions import Actions
+from core.qbl_memory.qbl_memory import *
 
 
 def main(argv):
 
-    router = Router()
+    qbl_memory = QblMemory()
+    actions = Actions(qbl_memory)
+
+    router = Router(actions)
     router.get_params(argv)
     router.call_action()
 
