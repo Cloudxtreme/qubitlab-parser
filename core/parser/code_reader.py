@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from .code_syntax import *
 from .identation import *
 
 class CodeReader:
@@ -9,6 +10,8 @@ class CodeReader:
 
         identation = Identation()
         identation.init_indentation_values()
+
+        code_syntax = CodeSyntax()
 
         with open(file_path) as f:
             for line in f:
