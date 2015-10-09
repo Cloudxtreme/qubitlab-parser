@@ -1,7 +1,7 @@
 # comment
 
 gate1 = Gate:
-    0, 0, 0
+    0, 0, 5.2+34.7j
     0, 1, 0
     0, 0, 1
     desc:                           # descripion is optional
