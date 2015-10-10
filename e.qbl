@@ -1,0 +1,59 @@
+# comment
+
+gate1 = Gate:                       ## Description of gate. It must start from the first line
+    0, 0, 5.2+34.7j                 ## of definition of the object and must be continuous line by line.
+    0, 1, 0                         ## Each line of description begins by "##". It musn't be continous
+    0, 0, 1                         ## with other object description (at least one space line required).
+
+psi = QubitState:                   ## Description of qubit state.
+    0.5|0> + (0.1+0.7j)|1>
+
+circ1 = Circuit:                    ## Description of circuit.
+    input:                          ## second line
+        qubit  ket0
+        bit    1
+        bit    0
+        qubit  0.5|0> + (0.1+0.7j)|1>
+        qubit  psi
+    step:
+        CNOT   0..1     # from 0 to 1
+        H      2
+        NOT    3
+        H      4
+    step:
+        SWAP   0..1
+        SWAP   2..3
+    step:
+        gate1  0..1
+        gate1  3..4
+    step:
+        mesure all
+
+circ2 = Circuit:
+    step:
+        CNOT   0..1     # from 0 to 1
+        H      2
+        NOT    3
+        H      4
+
+circ3 = Circuit:
+    step:
+        SWAP   0..1
+        SWAP   2..3
+
+circ4 = circ2 + circ3   # circuit concatenation
+                        # input in circ2 is required if circ4 will be run
+                        # in circ2 can be only input
+                        # input from circ3 is not used during circ4 running
+
+
+# usage
+# qbl?> import example1.qbl
+# qbl?> run circ1
+# qbl?> run circ1 + circ4
+# qbl?> circuits                # list of circuits in memory
+# qbl?> gates                   # list of gates in memory
+# qbl?> qubit_states            # list of states in memory
+# qbl?> objects                 # list of all objects in memory
+# qbl?> info <object_name>      # info about object
+

@@ -12,7 +12,6 @@ class CodeReader:
         identation.init_indentation_values()
 
         code_syntax = CodeSyntax()
-        code_syntax.test()
 
         with open(file_path) as f:
             for line in f:
@@ -20,18 +19,21 @@ class CodeReader:
                 # check indention
                 # ...
 
-                line = self.remove_comment_and_trim(line)
+                line_code = self.remove_comment_and_trim(line)
 
-                # syntax
-                # recognize line
-                # ...
+                if len(line_code) == 0:
+                    continue
 
+                line_data = code_syntax.recognize_line(line_code)
 
-
+                print line_data
+                print '=' + line_code + '='
                 print line,
 
         return qbl_memory
 
-    def remove_comment_and_trim(self):
-        pass
+    def remove_comment_and_trim(self, line):
+        line = re.sub(re.compile("#.*?\n" ) ,"" ,line)
+        line = line.strip()
+        return line
 

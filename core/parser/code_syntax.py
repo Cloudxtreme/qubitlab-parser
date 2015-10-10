@@ -1,48 +1,70 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import re
+
 
 class CodeSyntax:
 
     def __init__(self):
 
-        # Basic code patterns
+        # Code patterns
         cp = {
             'variable_name'     : '[a-zA-Z_]+[a-zA-Z_0-9]*',
             'optional_space'    : '( |\\t)*',
             'required_space'    : '( |\\t)+',
         }
+        cp['natural_number']        = '\d+'
+        cp['number_unbracketed']    = '(-?\d+(\.\d+)?((\+|-)\d+(\.\d+)j)?|-?\d+(\.\d+)j)'
+        cp['number']                = '(\(' + cp['number_unbracketed'] + '\)|' + cp['number_unbracketed'] + ')'
+        cp['attribution']           = cp['optional_space'] + '=' + cp['optional_space']
+        cp['qubit_state']           = cp['number'] + '\|0>' + cp['required_space'] + '\+' + cp['required_space'] + cp['number'] + '\|1>'
+        cp['gate_range']            = cp['natural_number'] + '\.\.' + cp['natural_number']
 
-        # Complex code patterns
-        cp['number']        = '(-?\d+(\.\d+)?((+|-)\d+(\.\d+)j)?|-?\d+(\.\d+)j)'
-        cp['vector']        = cp['number'] + '(' + cp['optional_space'] + ',' + cp['optional_space'] + cp['number'] + ')*'
-        cp['attribution']   = cp['optional_space'] + '=' + cp['optional_space']
-
-        self.line_patterns = {
-            'new_state'     : cp['variable_name'] + cp['attribution'] + 'State:',
-            'new_gate'      : cp['variable_name'] + cp['attribution'] + 'Gate:',
-            'new_circuit'   : cp['variable_name'] + cp['attribution'] + 'Circuit:'
+        # Line patterns
+        lp = {
+            'start_create_qubit_state'  : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'QubitState:',
+            'start_create_gate'         : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'Gate:',
+            'start_create_circuit'      : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'Circuit:',
+            'define_vector'             : '(?P<vector_values>' + cp['number'] + '(' + cp['optional_space'] + ',' + cp['optional_space'] + cp['number'] + ')*)',
+            'define_qubit_value'        : '(?P<value>' + cp['qubit_state'] + ')',
+            'start_define_desc'         : 'desc:',
+            'start_define_input'        : 'input:',
+            'start_define_step'         : 'step:',
+            'adding_variables'          : '(?P<variable_name>' + cp['variable_name'] + ')'
+                + cp['attribution'] + '(?P<adding_arguments>'
+                + cp['variable_name'] + '(' + cp['optional_space']+ '\+'
+                + cp['optional_space'] + cp['variable_name']
+                + ')*)',
+            'add_bit_to_input'          : 'bit' + cp['required_space'] + '(?P<value>(0|1))',
+            'add_qubit_to_input'        : 'qubit' + cp['required_space'] + '(?P<value>(' + cp['qubit_state'] + '|' + cp['variable_name'] + '))',
+            'add_gate_to_step'          : '(?P<gate_name>' + cp['variable_name'] + ')' + cp['required_space']
+                + '(?P<value>(' + cp['gate_range'] + '|' + cp['natural_number'] + '|all))',
         }
 
+        self.description_comment = '(?P<text_line>[a-zA-Z0-9\\t _\-+\.,!@#$%^&*()\\\\|/?<>"[\]{}\'~`=;:]*)'
+
+        self.code_patterns = cp
+        self.line_patterns = lp
 
     def recognize_line(self, line):
 
-        print line
+        for pattern_key, pattern in self.line_patterns.iteritems():
+            match_result = self.check_pattern(line, pattern)
+            if match_result['is_matched']:
+                return {
+                    'pattern_key' : pattern_key,
+                    'args' : match_result['args']
+                }
 
-        # fn_match = re.match(r"(?P<function>\w+)\s?\((?P<arg>(?P<args>\w+(,\s?)?)+)\)", s)
-        # fn_dict = fn_match.groupdict()
-        # del fn_dict['args']
-        # fn_dict['arg'] = [arg.strip() for arg in fn_dict['arg'].split(',')]
+        return {'pattern_key': None, 'args': {}}
 
-        pattern_key = ''
-        arguments = {
-            'arg1' : '',
-            'arg2' : ''
-        }
+    def check_pattern(self, line, pattern_str):
 
-        result = {
-            'pattern_key' : pattern_key,
-            'arguments' : arguments
-        }
-
-        return result
+        pattern = re.compile('^' + pattern_str + '$')
+        line_match = pattern.match(line)
+        if line_match:
+            args = line_match.groupdict()
+            return {'is_matched': True, 'args': args}
+        else:
+            return {'is_matched': False, 'args': {}}
