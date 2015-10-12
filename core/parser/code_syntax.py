@@ -7,7 +7,6 @@ import re
 class CodeSyntax:
 
     def __init__(self):
-
         # Code patterns
         cp = {
             'variable_name'     : '[a-zA-Z_]+[a-zA-Z_0-9]*',
@@ -48,7 +47,6 @@ class CodeSyntax:
         self.line_patterns = lp
 
     def recognize_line(self, line):
-
         for pattern_key, pattern in self.line_patterns.iteritems():
             match_result = self.check_pattern(line, pattern)
             if match_result['is_matched']:
@@ -56,11 +54,9 @@ class CodeSyntax:
                     'pattern_key' : pattern_key,
                     'args' : match_result['args']
                 }
-
         return {'pattern_key': None, 'args': {}}
 
     def check_pattern(self, line, pattern_str):
-
         pattern = re.compile('^' + pattern_str + '$')
         line_match = pattern.match(line)
         if line_match:

@@ -12,16 +12,13 @@ class Actions:
     def __init__(self, qbl_memory):
         self.qbl_memory = qbl_memory
 
-    @staticmethod
-    def list_action():
+    def list_action(self):
         print "List of objects in QBL memory..."
 
-    @staticmethod
-    def info_action():
+    def info_action(self):
         print "Info about object in QBL memory..."
 
-    @staticmethod
-    def graph_action():
+    def graph_action(self):
         print "Display graphical scheme of circuit..."
 
     def import_action(self, args):
@@ -46,12 +43,10 @@ class Actions:
 
         return True
 
-    @staticmethod
-    def run_action():
+    def run_action(self):
         print "Start running the simulation..."
 
-    @staticmethod
-    def help_action():
+    def help_action(self):
         print
         print "-- HELP --"
         print
@@ -61,6 +56,8 @@ class Actions:
         print "\tOPTIONS:"
         print "\t--output <file_path>                       Output file."
         print "\t-o <file_path>                             The same as \"--output\"."
+        print "\t--help <file_path>                         Show help and ingore command."
+        print "\t-h <file_path>                             The same as \"--help\"."
         print
         print "\tCOMMANDS:"
         print "\thelp                                       Show help."
@@ -71,8 +68,7 @@ class Actions:
         print "\trun <circuit_name> <file_name>.qbl         Start running the simulation."
         print
 
-    @staticmethod
-    def dialog_help_action():
+    def dialog_help_action(self):
         print
         print "-- HELP --"
         print
@@ -132,12 +128,10 @@ class Actions:
             print "[ERROR] Incorrect command!"
             print "Type 'help' to show available commands."
 
-    @staticmethod
-    def error_action():
+    def error_action(self):
         print "[ERROR] Incorrect action."
         sys.exit(2)
 
-    @staticmethod
-    def show_params_numb_error(command):
+    def show_params_numb_error(self, command):
         print "[ERROR] Incorrect number of parameters for command \"%s\"" % command
         print "Type 'help' to show available commands."

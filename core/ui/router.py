@@ -15,7 +15,7 @@ class Router:
 
     def get_params(self, argv):
         try:
-            opts, args = getopt.getopt(argv, "o:", ["output="])
+            opts, args = getopt.getopt(argv, "o:h", ["output=", "help"])
         except getopt.GetoptError:
             print "[ERROR] Wrong parameters."
             sys.exit(2)
@@ -23,6 +23,9 @@ class Router:
         for opt, value in opts:
             if opt in ("-o", "--output"):
                 self.output = value
+            if opt in ("-h", "--help"):
+                self.actions.help_action()
+                sys.exit(0)
 
         if len(args) > 0:
             self.args = args
