@@ -51,7 +51,7 @@ class Identation:
         if self.expected_indentation_type == 'max':
             if self.expected_indentation_level < self.current_indentation_level:
                 raise Exception('Identation error. Line: ' + self.current_line_number)
-        elif self.expected_indentation_type == 'max':
+        elif self.expected_indentation_type == 'equal':
             if self.expected_indentation_level < self.current_indentation_level:
                 raise Exception('Identation error. Line: ' + self.current_line_number)
 
