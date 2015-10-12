@@ -55,12 +55,12 @@ circ4 = circ2 + circ3   # circuit concatenation
 
 
 # usage
-# qbl?> import example1.qbl
-# qbl?> run circ1
-# qbl?> run circ1 + circ4
-# qbl?> circuits                # list of circuits in memory
-# qbl?> gates                   # list of gates in memory
-# qbl?> qubit_states            # list of states in memory
-# qbl?> objects                 # list of all objects in memory
-# qbl?> info <object_name>      # info about object
+# qbl> import example1.qbl
+# qbl> run circ1
+# qbl> run circ1 + circ4
+# qbl> circuits                # list of circuits in memory
+# qbl> gates                   # list of gates in memory
+# qbl> qubit_states            # list of states in memory
+# qbl> objects                 # list of all objects in memory
+# qbl> info <object_name>      # info about object
 
