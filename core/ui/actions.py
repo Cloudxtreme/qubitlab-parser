@@ -54,18 +54,20 @@ class Actions:
         print "python qubitlab.py [OPTIONS] [COMMAND]"
         print
         print "\tOPTIONS:"
-        print "\t--output <file_path>                       Output file."
-        print "\t-o <file_path>                             The same as \"--output\"."
-        print "\t--help <file_path>                         Show help and ingore command."
-        print "\t-h <file_path>                             The same as \"--help\"."
+        print "\t--output <file_path>                           Output file."
+        print "\t-o <file_path>                                 The same as \"--output\"."
+        print "\t--help <file_path>                             Show help and ingore command."
+        print "\t-h <file_path>                                 The same as \"--help\"."
         print
         print "\tCOMMANDS:"
-        print "\thelp                                       Show help."
+        print "\thelp                                           Show help."
         print
-        print "\tlist <file_name>.qbl                       List of objects in QBL memory."
-        print "\tinfo <object_name> <file_name>.qbl         Info about object in QBL memory."
-        print "\tgraph <circiut_name> <file_name>.qbl       Display graphical scheme of circuit.."
-        print "\trun <circuit_name> <file_name>.qbl         Start running the simulation."
+        print "\tlist <one_or_more_qbl_files>                   List of objects in QBL memory."
+        print "\tinfo <object_name> <one_or_more_qbl_files>     Info about object in QBL memory."
+        print "\tgraph <circiut_name> <one_or_more_qbl_files>   Display graphical scheme of circuit.."
+        print "\trun <circuit_name> <one_or_more_qbl_files>     Start running the simulation."
+        print
+        print "<circuit_name> may be also concatenation of many circuits: \"circ1+circ2\"."
         print
 
     def dialog_help_action(self):
@@ -74,14 +76,16 @@ class Actions:
         print
         print "Available commands:"
         print
-        print "\tquit                       Exit the program."
-        print "\thelp                       Show help."
+        print "\tquit                               Exit the program."
+        print "\thelp                               Show help."
         print
-        print "\tlist                       List of objects in QBL memory."
-        print "\tinfo <object_name>         Info about objecti in QBL memory."
-        print "\timport <filename>.qbl      Import data from QBL file to QBL memory."
-        print "\tgraph <circiut_name>       Display graphical scheme of circuit.."
-        print "\trun <circiut_name>         Start running the simulation."
+        print "\tlist                               List of objects in QBL memory."
+        print "\tinfo <object_name>                 Info about objecti in QBL memory."
+        print "\timport <one_or_more_qbl_files>     Import data from QBL file to QBL memory."
+        print "\tgraph <circiut_name>               Display graphical scheme of circuit.."
+        print "\trun <circiut_name>                 Start running the simulation."
+        print
+        print "<circuit_name> may be also concatenation of many circuits: \"circ1+circ2\"."
         print
 
     def dialog_action(self):
