@@ -1,15 +1,20 @@
-# comment
+# This is comment.
 
-gate1 = Gate:                       ## Description of gate. It must start from the first line
-    0, 0, 5.2+34.7j                 ## of definition of the object and must be continuous line by line.
-    0, 1, 0                         ## Each line of description begins by "##". It musn't be continous
-    0, 0, 1                         ## with other object description (at least one space line required).
+# This is example of file writen in experimental QBL Language.
+# QBL Language lets you to define quantum circuits
+# and then you can run simulation of this circuits in QubitLab.
 
-psi = QubitState:                   ## Description of qubit state.
+
+gate1 = Gate:                               ## Description of gate. It must start from the first line
+    0, 0, 5.2+34.7j                         ## of definition of the object and must be continuous line by line.
+    0, 1, 0                                 ## Each line of description begins by "##". It musn't be continous
+    0, 0, 1                                 ## with other object description (at least one space line required).
+
+psi = QubitState:                           ## Description of qubit state.
     0.5|0> + (0.1+0.7j)|1>
 
-circ1 = Circuit:                    ## Description of circuit.
-    input:                          ## second line
+circ1 = Circuit:                            ## Description of circuit.
+    input:                                  ## second line
         qubit  ket0
         bit    1
         bit    0
