@@ -9,6 +9,8 @@ gate1 = Gate:                               ## Description of gate. It must star
     0, 0, 5.2+34.7j                         ## of definition of the object and must be continuous line by line.
     0, 1, 0                                 ## Each line of description begins by "##". It musn't be continous
     0, 0, 1                                 ## with other object description (at least one space line required).
+                                            ## This description will be display after using 'info <object_name>'
+                                            ## command.
 
 psi = QubitState:                           ## Description of qubit state.
     0.5|0> + (0.1+0.7j)|1>
