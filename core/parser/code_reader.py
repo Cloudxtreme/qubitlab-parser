@@ -28,7 +28,9 @@ class CodeReader:
                 print line_data
                 print line,
 
-        return qbl_memory
+        code_node.save_qbl_memory()
+
+        return code_node.qbl_memory
 
     def remove_comment_and_trim(self, line):
         line = re.sub(re.compile("#.*?\n" ) ,"" ,line)

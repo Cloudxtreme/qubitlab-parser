@@ -79,3 +79,6 @@ class CodeNode:
 
     def update_tmp_qbl_memory(self, line_data):
         pass
+
+    def save_qbl_memory(self):
+        self.qbl_memory.commit_new_objects()
