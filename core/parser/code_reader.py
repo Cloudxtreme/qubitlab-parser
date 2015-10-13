@@ -7,10 +7,13 @@ from .indentation import *
 
 class CodeReader:
 
-    def read_file(self, file_path, qbl_memory):
+    def __init__(self, qbl_memory):
+        self.qbl_memory = qbl_memory
+
+    def read_file(self, file_path):
 
         indentation = Indentation()
-        code_node = CodeNode(qbl_memory)
+        code_node = CodeNode(self.qbl_memory)
         code_syntax = CodeSyntax()
 
         line_number = 0;

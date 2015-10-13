@@ -39,7 +39,7 @@ class Actions:
                 return False
 
         parser = Parser()
-        parser.parse_code(file, None)
+        parser.parse_code(file, self.qbl_memory)
 
         return True
 
