@@ -4,7 +4,8 @@
 
 class CodeNode:
 
-    def __init__(self):
+    def __init__(self, qbl_memory):
+        self.qbl_memory = qbl_memory
         self.node_stack = []
 
         self.nodes_settings = {
@@ -69,4 +70,12 @@ class CodeNode:
             },
         }
 
+    def process_line(self, line_data, identation_level, line_number):
+        if self.valid_node_settings(line_data, identation_level, line_number):
+            self.update_tmp_qbl_memory(line_data)
 
+    def valid_node_settings(self, line_data, identation_level, line_number):
+        return True
+
+    def update_tmp_qbl_memory(self, line_data):
+        pass

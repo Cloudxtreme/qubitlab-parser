@@ -6,7 +6,7 @@ import re
 
 class Indentation:
 
-    def init_indentation_values(self):
+    def __init__(self):
         self.indentation_type = None                # None or 'tab' or 'spaces'
         self.indentation_width = 0
 
