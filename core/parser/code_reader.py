@@ -24,7 +24,7 @@ class CodeReader:
                 line_code = self.remove_comment_and_trim(line)
                 if len(line_code) == 0:
                     continue
-                line_data = code_syntax.recognize_line(line_code)
+                line_data = code_syntax.recognize_line(line_code, line_number)
                 ast.process_line(line_data, indentation_level, line_number)
 
         ast.valid_ast_tree()

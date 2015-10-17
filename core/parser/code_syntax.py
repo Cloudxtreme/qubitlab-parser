@@ -46,7 +46,7 @@ class CodeSyntax:
         self.code_patterns = cp
         self.line_patterns = lp
 
-    def recognize_line(self, line):
+    def recognize_line(self, line, line_number):
         for pattern_key, pattern in self.line_patterns.iteritems():
             match_result = self.check_pattern(line, pattern)
             if match_result['is_matched']:
@@ -54,6 +54,7 @@ class CodeSyntax:
                     'pattern_key' : pattern_key,
                     'args' : match_result['args']
                 }
+        raise SyntaxError('incorrect syntax, ' + 'line ' + str(line_number))
         return {'pattern_key': None, 'args': {}}
 
     def check_pattern(self, line, pattern_str):
