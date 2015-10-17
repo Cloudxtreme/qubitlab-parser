@@ -82,9 +82,11 @@ class AST:
         self.append_current_line_data_to_ast()
 
     def prepare_line_data(self, line_data, indentation_level, line_number):
-        self.current_line_data = line_data
-        self.current_indentation_level = indentation_level
         self.current_line_number = line_number
+        self.current_line_data = line_data
+        if indentation_level - self.current_indentation_level > 1:
+            raise SyntaxError('incorrect indentation, ' + 'line ' + str(self.current_line_number))
+        self.current_indentation_level = indentation_level
 
     def append_current_line_data_to_ast(self):
         line_data = copy.copy(self.current_line_data)

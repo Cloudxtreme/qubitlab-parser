@@ -27,7 +27,7 @@ class CodeReader:
                 line_data = code_syntax.recognize_line(line_code)
                 ast.process_line(line_data, indentation_level, line_number)
 
-        ast.valid_ast_nodes()
+        ast.valid_ast_tree()
         ast.update_qbl_memory()
 
     def remove_comment_and_trim(self, line):

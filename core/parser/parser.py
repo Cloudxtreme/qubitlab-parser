@@ -8,6 +8,9 @@ class Parser:
     def parse_code(self, file_path, qbl_memory):
 
         code_reader = CodeReader(qbl_memory)
-        qbl_memory = code_reader.read_file(file_path)
+        try:
+            qbl_memory = code_reader.read_file(file_path)
+        except SyntaxError as e:
+            print 'Syntax error: ' + e.message
 
         return qbl_memory
