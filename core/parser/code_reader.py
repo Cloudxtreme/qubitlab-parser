@@ -27,9 +27,6 @@ class CodeReader:
                 line_data = code_syntax.recognize_line(line_code)
                 ast.process_line(line_data, indentation_level, line_number)
 
-                #print "level = " + str(indentation_level) + "; ",
-                #print line_data
-                #print line,
         ast.valid_ast_nodes()
         ast.update_qbl_memory()
 
