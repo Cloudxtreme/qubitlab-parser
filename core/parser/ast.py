@@ -91,19 +91,22 @@ class AST:
         line_data = copy.copy(self.current_line_data)
         line_data['line_number'] = self.current_line_number
         line_data['children'] = []
-        parent_node_children = self.get_parent_node_children()
-        parent_node_children.append(
+        node_children = self.get_node_children()
+        node_children.append(
             line_data
         )
 
-    def get_parent_node_children(self):
-        parent_node_children = self.ast_tree
+    def get_node_children(self):
+        node_children = self.ast_tree
         for x in range(0, self.current_indentation_level):
-            parent_node_children = parent_node_children[-1]['children']
-        return parent_node_children
+            node_children = node_children[-1]['children']
+        return node_children
 
     def valid_ast_tree(self):
         pass
+
+    def valid_node_children(self):
+
 
     def update_qbl_memory(self):
         print json.dumps(self.ast_tree, sort_keys=True, indent=4)
