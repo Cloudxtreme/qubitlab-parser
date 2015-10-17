@@ -101,7 +101,7 @@ class AST:
             parent_node_children = parent_node_children[-1]['children']
         return parent_node_children
 
-    def valid_ast_nodes(self):
+    def valid_ast_tree(self):
         pass
 
     def update_qbl_memory(self):
