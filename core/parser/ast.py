@@ -106,7 +106,7 @@ class AST:
         pass
 
     def valid_node_children(self):
-
+        pass
 
     def update_qbl_memory(self):
         print json.dumps(self.ast_tree, sort_keys=True, indent=4)
