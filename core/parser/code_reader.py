@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from .code_syntax import *
-from .code_node import *
+from .ast import *
 from .indentation import *
 
 class CodeReader:
@@ -13,7 +13,7 @@ class CodeReader:
     def read_file(self, file_path):
 
         indentation = Indentation()
-        code_node = CodeNode(self.qbl_memory)
+        code_node = AST(self.qbl_memory)
         code_syntax = CodeSyntax()
 
         line_number = 0;
