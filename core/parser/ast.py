@@ -13,7 +13,6 @@ class AST:
         self.current_line_number = 0
         self.current_indentation_level = 0
         self.current_line_data = {}
-        self.current_node_settings = {}
 
         self.nodes_settings = {
             'create_qubit_state': {
@@ -108,5 +107,3 @@ class AST:
 
     def update_qbl_memory(self):
         print json.dumps(self.ast_tree, sort_keys=True, indent=4)
-
-
