@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import copy
+import json
 
 
 class AST:
 
     def __init__(self, qbl_memory):
         self.qbl_memory = qbl_memory
-        self.node_stack = []
-        self.new_node_stack = []
+        self.ast_tree = []
         self.current_line_number = 0
         self.current_indentation_level = 0
         self.current_line_data = {}
@@ -78,38 +78,33 @@ class AST:
         }
 
     def process_line(self, line_data, indentation_level, line_number):
-        self.prepare_data(line_data, indentation_level, line_number)
-        self.update_tmp_qbl_memory()
-        self.save_node_stack()
+        self.prepare_line_data(line_data, indentation_level, line_number)
+        self.append_current_line_data_to_ast()
 
-    def prepare_data(self, line_data, indentation_level, line_number):
+    def prepare_line_data(self, line_data, indentation_level, line_number):
         self.current_line_data = line_data
         self.current_indentation_level = indentation_level
         self.current_line_number = line_number
-        self.set_new_node_stack()
 
-    def set_new_node_stack(self):
-        new_node_stack = copy.copy(self.node_stack[:self.current_indentation_level])
-        if len(new_node_stack) == self.current_indentation_level + 1:
-            new_node_stack[self.current_indentation_level] = self.current_line_data['pattern_key']
-        elif len(new_node_stack) == self.current_indentation_level:
-            new_node_stack.append(self.current_line_data['pattern_key'])
-        else:
-            raise Exception('Indentation error. Line: ' + str(self.current_line_number))
-        print 'STACK = ' + str(new_node_stack)
-        self.new_node_stack = new_node_stack
+    def append_current_line_data_to_ast(self):
+        line_data = copy.copy(self.current_line_data)
+        line_data['line_number'] = self.current_line_number
+        line_data['children'] = []
+        parent_node_children = self.get_parent_node_children()
+        parent_node_children.append(
+            line_data
+        )
 
-    def valid_nodes(self):
-        return True
+    def get_parent_node_children(self):
+        parent_node_children = self.ast_tree
+        for x in range(0, self.current_indentation_level):
+            parent_node_children = parent_node_children[-1]['children']
+        return parent_node_children
 
-    def update_tmp_qbl_memory(self):
+    def valid_ast_nodes(self):
         pass
 
-    def save_node_stack(self):
-        self.node_stack = self.new_node_stack
+    def update_qbl_memory(self):
+        print json.dumps(self.ast_tree, sort_keys=True, indent=4)
 
-    def save_qbl_memory(self):
-        if self.valid_nodes():
-            self.qbl_memory.commit_new_objects()
-        else:
-            raise Exception('Syntax error.')
+

@@ -13,7 +13,7 @@ class CodeReader:
     def read_file(self, file_path):
 
         indentation = Indentation()
-        code_node = AST(self.qbl_memory)
+        ast = AST(self.qbl_memory)
         code_syntax = CodeSyntax()
 
         line_number = 0;
@@ -25,15 +25,15 @@ class CodeReader:
                 if len(line_code) == 0:
                     continue
                 line_data = code_syntax.recognize_line(line_code)
-                code_node.process_line(line_data, indentation_level, line_number)
+                ast.process_line(line_data, indentation_level, line_number)
 
                 #print "level = " + str(indentation_level) + "; ",
                 #print line_data
                 #print line,
+        ast.valid_ast_nodes()
+        ast.update_qbl_memory()
 
-        code_node.save_qbl_memory()
-
-        return code_node.qbl_memory
+        return ast.qbl_memory
 
     def remove_comment_and_trim(self, line):
         line = re.sub(re.compile("#.*?\n" ) ,"" ,line)
