@@ -33,8 +33,6 @@ class CodeReader:
         ast.valid_ast_nodes()
         ast.update_qbl_memory()
 
-        return ast.qbl_memory
-
     def remove_comment_and_trim(self, line):
         line = re.sub(re.compile("#.*?\n" ) ,"" ,line)
         line = line.strip()
