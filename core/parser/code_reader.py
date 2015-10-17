@@ -13,7 +13,7 @@ class CodeReader:
     def read_file(self, file_path):
 
         indentation = Indentation()
-        ast = AST(self.qbl_memory)
+        ast = Ast(self.qbl_memory)
         code_syntax = CodeSyntax()
 
         line_number = 0;
