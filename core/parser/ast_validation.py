@@ -5,7 +5,6 @@
 class AstValidation:
 
     def __init__(self):
-
         self.nodes_settings = {
             'create_qubit_state': {
                 'required_children': {
@@ -69,17 +68,35 @@ class AstValidation:
         }
 
     def valid_root(self, root):
-        for node_child in root:
-            if(False == self.valid_node(node_child)):
+        for index, node_child in enumerate(root):
+            if(False == self.valid_node(node_child, root, index)):
                 return False
 
-    def valid_node(self, node):
-        if(False == self.valid_node_data(node)):
+    def valid_node(self, node, parent, child_index):
+        if(False == self.valid_node_data(node, parent, child_index)):
             return False
-        for node_child in node['children']:
-            if(False == self.valid_node(node_child)):
+        for index, node_child in enumerate(node['children']):
+            if(False == self.valid_node(node_child, node, index)):
                 return False
         return True
 
-    def valid_node_data(self, node):
+    def valid_node_data(self, node, parent, child_index):
         return True;
+
+    def required_children(self):
+        pass
+
+    def available_children(self):
+        pass
+
+    def min_numb_of_children(self):
+        pass
+
+    def no_children(self):
+        pass
+
+    def not_after_node(self):
+        pass
+
+    def only_one_in_parent_node(self):
+        pass
