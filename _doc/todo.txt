@@ -1,0 +1,19 @@
+TODO:
+    - core features
+        - parser
+            - valid ast_tree
+            - convert ast to qbl_memory_new_objects
+            - merge qbl_memory_new_objects to qbl_memory
+        - simulator
+        - informer
+        - diagrams
+
+    - new features
+        - generate LaTeX diagrams
+        - loops
+        - auto swap-gates
+        - new objects (gates, math elements, etc)
+
+    - refactor
+        - print error replace by raise exception + try-except - in all code
+        - using grammar in parser (for example https://pyparsing.wikispaces.com/)
