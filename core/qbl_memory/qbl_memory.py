@@ -11,7 +11,7 @@ class QblMemory:
             'states': {}
         }
 
-        self.qbl_tmb_objects = {
+        self.qbl_tmp_objects = {
             'gates': {},
             'circuits': {},
             'states': {}
