@@ -18,19 +18,19 @@ class Indentation:
         tabs_numb = line_indentation.count('\t')
 
         if spaces_numb > 0 and tabs_numb > 0:
-            raise Exception('Mixed indentations. Line: ' + line_number)
+            raise SyntaxError('mixed indentations, line: ' + str(line_number))
         elif spaces_numb > 0:
             if self.indentation_type is None:
                 self.indentation_type = 'spaces'
                 self.indentation_width = spaces_numb
             if self.indentation_type == 'spaces':
                 if spaces_numb % self.indentation_width != 0:
-                    raise Exception('indentation error. Line: ' + line_number)
+                    raise Exception('indentation error, line: ' + str(line_number))
                 else:
                     indentation_level = spaces_numb / self.indentation_width
                     return indentation_level
             else:
-                raise Exception('Mixed indentations. Line: ' + line_number)
+                raise SyntaxError('mixed indentations, line: ' + str(line_number))
         elif tabs_numb > 0:
             if self.indentation_type is None:
                 indentation_type = 'tabs'
@@ -38,7 +38,7 @@ class Indentation:
                 indentation_level = tabs_numb
                 return indentation_level
             else:
-                raise Exception('Mixed indentations. Line: ' + line_number)
+                raise SyntaxError('mixed indentations, line: ' + str(line_number))
         else:
             indentation_level = 0
             return indentation_level
