@@ -1,11 +1,12 @@
 TODO:
     - core features
-        - parser
+        - qbl_memory
             - convert ast to qbl_memory_new_objects
             - merge qbl_memory_new_objects to qbl_memory
-            - doc comments '##'
         - simulator
         - diagrams
+        - parser
+            - doc comments '##'
         - informer
 
     - new features
