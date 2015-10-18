@@ -18,27 +18,28 @@ class CodeSyntax:
         cp['number']                = '(\(' + cp['number_unbracketed'] + '\)|' + cp['number_unbracketed'] + ')'
         cp['attribution']           = cp['optional_space'] + '=' + cp['optional_space']
         cp['qubit_state']           = cp['number'] + '\|0>' + cp['required_space'] + '\+' + cp['required_space'] + \
-            cp['number'] + '\|1>'
+                cp['number'] + '\|1>'
         cp['gate_range']            = cp['natural_number'] + '\.\.' + cp['natural_number']
 
         # Line patterns
         lp = {
-            'create_qubit_state' : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'QubitState:',
+            'create_qubit_state' : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + \
+                    'QubitState:',
             'create_gate'        : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'Gate:',
             'create_circuit'     : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'Circuit:',
             'define_vector'      : '(?P<vector_values>' + cp['number'] + '(' + cp['optional_space'] + ','
-                + cp['optional_space'] + cp['number'] + ')*)',
+                    + cp['optional_space'] + cp['number'] + ')*)',
             'define_qubit_value' : '(?P<value>' + cp['qubit_state'] + ')',
             'define_input'       : 'input:',
             'define_step'        : 'step:',
             'adding_variables'   : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution']
-                + '(?P<adding_arguments>' + cp['variable_name'] + '(' + cp['optional_space']+ '\+'
-                + cp['optional_space'] + cp['variable_name'] + ')*)',
+                    + '(?P<adding_arguments>' + cp['variable_name'] + '(' + cp['optional_space']+ '\+'
+                    + cp['optional_space'] + cp['variable_name'] + ')*)',
             'add_bit_to_input'   : 'bit' + cp['required_space'] + '(?P<value>(0|1))',
             'add_qubit_to_input' : 'qubit' + cp['required_space'] + '(?P<value>(' + cp['qubit_state'] + '|'
-                + cp['variable_name'] + '))',
+                    + cp['variable_name'] + '))',
             'add_item_to_step'   : '(?P<item_name>' + cp['variable_name'] + ')' + cp['required_space']
-                + '(?P<value>(' + cp['gate_range'] + '|' + cp['natural_number'] + '|all))',
+                    + '(?P<value>(' + cp['gate_range'] + '|' + cp['natural_number'] + '|all))',
         }
 
         self.description_comment = '(?P<text_line>[a-zA-Z0-9\\t _\-+\.,!@#$%^&*()\\\\|/?<>"[\]{}\'~`=;:]*)'
