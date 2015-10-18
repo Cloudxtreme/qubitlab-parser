@@ -15,5 +15,8 @@ TODO:
         - new objects (gates, math elements, etc)
 
     - refactor
+        - split methods to smaller in:
+            - Parser/Indentation
+            - Parser/CodeReader
         - print error replace by raise exception + try-except - in all code
         - using grammar in parser (for example https://pyparsing.wikispaces.com/)
