@@ -1,2 +1,2 @@
 # qubitlab
-QubitLab - Quantum Computing Laboratory
+QubitLab - Quantum Computing Simulator

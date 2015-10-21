@@ -92,7 +92,7 @@ class Actions:
 
         print
         print "== QubitLab v.0 =="
-        print "Quantum Computing Laboratory"
+        print "Quantum Computing Simulator"
         print "www.qubitlab.net"
         print
 
