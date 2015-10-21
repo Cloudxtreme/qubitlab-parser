@@ -4,6 +4,7 @@
 import copy
 import json
 from .ast_validation import *
+from .ast_converter import *
 
 
 class Ast:
@@ -15,6 +16,7 @@ class Ast:
         self.current_indentation_level = 0
         self.current_line_data = {}
         self.ast_validation = AstValidation()
+        self.ast_converter = AstConverter()
 
     def process_line(self, line_data, indentation_level, line_number):
         self.prepare_line_data(line_data, indentation_level, line_number)
@@ -46,4 +48,6 @@ class Ast:
         self.ast_validation.valid_root(self.ast_tree)
 
     def update_qbl_memory(self):
-        print json.dumps(self.ast_tree, sort_keys=True, indent=4)
+        #print json.dumps(self.ast_tree, sort_keys=True, indent=4)
+        new_qbl_memory_data = self.ast_converter.get_qbl_memory_data(self.ast_tree)
+        print json.dumps(new_qbl_memory_data, sort_keys=True, indent=4)

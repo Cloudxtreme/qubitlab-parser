@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 
-class AstQblMemory:
+class AstConverter:
 
     def __init__(self):
         self.qbl_memory_data = {}
 
-    def convert_to_qbl_memory_data(self, ast_tree):
+    def get_qbl_memory_data(self, ast_tree):
         self.qbl_memory_data = {}
         self.get_root_objects(ast_tree)
         return self.qbl_memory_data
@@ -31,7 +31,7 @@ class AstQblMemory:
     def append_variable(self, variable):
         self.qbl_memory_data[variable['name']] = {
             'type': variable['type'],
-            'data': variable['']
+            'data': variable['data']
         }
 
     def get_qubit_state(self, ast_node):
@@ -39,7 +39,7 @@ class AstQblMemory:
         # ...
 
         return {
-            'name': 'name1',
+            'name': ast_node['args']['variable_name'],
             'type': 'QubitState',
             'data': 'data1'
         }
@@ -49,7 +49,7 @@ class AstQblMemory:
         # ...
 
         return {
-            'name': 'name1',
+            'name': ast_node['args']['variable_name'],
             'type': 'Gate',
             'data': 'data1'
         }
@@ -59,7 +59,7 @@ class AstQblMemory:
         # ...
 
         return {
-            'name': 'name1',
+            'name': ast_node['args']['variable_name'],
             'type': 'Circuit',
             'data': 'data1'
         }
@@ -69,7 +69,7 @@ class AstQblMemory:
         # ...
 
         return {
-            'name': 'name1',
+            'name': ast_node['args']['variable_name'],
             'type': 'Expression',
             'data': 'data1'
         }
