@@ -1,8 +1,8 @@
 TODO:
     - core features
         - informer
-        - simulator
         - diagram
+        - simulator
         - parser
             - "import <filename>" command
             - doc comments '##'

@@ -14,7 +14,11 @@ class Actions:
         self.qbl_memory = qbl_memory
 
     def list_action(self):
-        print "List of objects in QBL memory..."
+        print
+        print "=== QBL Memory objects ==="
+        print
+        pprint.pprint(self.qbl_memory.qbl_objects)
+        print
 
     def info_action(self):
         print "Info about object in QBL memory..."
@@ -41,7 +45,6 @@ class Actions:
 
         parser = Parser()
         parser.parse_code(file, self.qbl_memory)
-        pprint.pprint(self.qbl_memory.qbl_objects)
 
         return True
 
@@ -116,10 +119,10 @@ class Actions:
                 self.import_action(command_args)
                 continue
             if command == 'list':
-                self.graph_action()
+                self.list_action()
                 continue
             if command == 'info':
-                self.graph_action()
+                self.info_action()
                 continue
             if command == 'graph':
                 self.graph_action()
