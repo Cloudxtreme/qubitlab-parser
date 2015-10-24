@@ -1,8 +1,12 @@
 TODO:
     - core features
+        - simulator
+            - build circuit
+            - run simulation
+            - get final state
+            - get given steep state
         - informer
         - diagram
-        - simulator
         - parser
             - "import <filename>" command
             - doc comments '##'
