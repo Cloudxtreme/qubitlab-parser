@@ -4,7 +4,7 @@ TODO:
             - build circuit
             - run simulation
             - get final state
-            - get given steep state
+            - get given step state
         - informer
         - diagram
         - parser
