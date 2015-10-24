@@ -53,10 +53,12 @@ class Actions:
 
     def help_action(self):
         print
-        print "=== QubitLab HELP ==="
+        print self.get_header()
+        print
+        print "=== HELP ==="
         print
         print "USAGE:"
-        print "\t./qubitlab.py <OPTIONS> <COMMAND>"
+        print "\t./qubitlab.py [OPTIONS] [COMMAND]"
         print
         print "OPTIONS:"
         print "\t--output <file_path>                                           Output file."
@@ -89,7 +91,7 @@ class Actions:
         print
         print "=== HELP ==="
         print
-        print "Available commands:"
+        print "AVAILABLE COMMANDS:"
         print
         print "\tquit                                   Exit the program."
         print "\thelp                                   Show help."
@@ -112,12 +114,16 @@ class Actions:
         print "\trun circ1+circ2:2"
         print
 
+    def get_header(self):
+        header =  "== QubitLab v.0 ==\n" \
+                + "Quantum Computing Simulator\n" \
+                + "www.qubitlab.net"
+        return header
+
     def dialog_action(self):
 
         print
-        print "== QubitLab v.0 =="
-        print "Quantum Computing Simulator"
-        print "www.qubitlab.net"
+        print self.get_header()
         print
 
         while 1:
