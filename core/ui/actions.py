@@ -53,23 +53,24 @@ class Actions:
 
     def help_action(self):
         print
-        print "=== HELP ==="
+        print "=== QubitLab HELP ==="
         print
-        print "Usage:"
-        print "./qubitlab.py <OPTIONS> <COMMAND>"
+        print "USAGE:"
+        print "\t./qubitlab.py <OPTIONS> <COMMAND>"
         print
-        print "\tOPTIONS:"
+        print "OPTIONS:"
         print "\t--output <file_path>                                           Output file."
         print "\t-o <file_path>                                                 The same as \"--output\"."
         print "\t--help                                                         Show help and ingore command."
         print "\t-h                                                             The same as \"--help\"."
         print
-        print "\tCOMMANDS:"
+        print "AVAILABLE COMMANDS:"
         print "\thelp                                                           Show help."
         print
         print "\tlist <one_or_more_qbl_files>                                   List of objects in QBL memory."
         print "\tinfo <object_name> <one_or_more_qbl_files>                     Info about object in QBL memory."
         print "\tgraph <circiut_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
+        print
         print "\trun <circuit_name>[:<step_number>] <one_or_more_qbl_files>     Start running the simulation"
         print "\t                                                               and get final state."
         print
@@ -80,8 +81,8 @@ class Actions:
         print "\t                                                               concatenation of many circuits, f.e."
         print "\t                                                               \"circ1+circ2+circ3\"."
         print
-        print "Example usage:"
-        print "./qubitlab.py run circ1 examples/example1.qbl"
+        print "EXAMPLE:"
+        print "\t./qubitlab.py run circ1+circ2:2 examples/example1.qbl"
         print
 
     def dialog_help_action(self):
@@ -106,6 +107,9 @@ class Actions:
         print "\t                                       <circuit_name> may be also"
         print "\t                                       concatenation of many circuits, f.e."
         print "\t                                       \"circ1+circ2+circ3\"."
+        print
+        print "EXAMPLE:"
+        print "\trun circ1+circ2:2"
         print
 
     def dialog_action(self):
