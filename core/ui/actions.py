@@ -56,7 +56,7 @@ class Actions:
         print "=== HELP ==="
         print
         print "Usage:"
-        print "python qubitlab.py <OPTIONS> <COMMAND>"
+        print "./qubitlab.py <OPTIONS> <COMMAND>"
         print
         print "\tOPTIONS:"
         print "\t--output <file_path>                                           Output file."
@@ -71,11 +71,17 @@ class Actions:
         print "\tinfo <object_name> <one_or_more_qbl_files>                     Info about object in QBL memory."
         print "\tgraph <circiut_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
         print "\trun <circuit_name>[:<step_number>] <one_or_more_qbl_files>     Start running the simulation"
-        print "\t                                                               and get final state. Use optional"
-        print "\t                                                               <step_number> parameter to get state"
-        print "\t                                                               for this step."
+        print "\t                                                               and get final state."
         print
-        print "<circuit_name> may be also concatenation of many circuits: \"circ1+circ2\"."
+        print "\t                                                               Use optional <step_number> parameter"
+        print "\t                                                               to get state for this step."
+        print
+        print "\t                                                               <circuit_name> may be also"
+        print "\t                                                               concatenation of many circuits, f.e."
+        print "\t                                                               \"circ1+circ2+circ3\"."
+        print
+        print "Example usage:"
+        print "./qubitlab.py run circ1 examples/example1.qbl"
         print
 
     def dialog_help_action(self):
@@ -92,11 +98,14 @@ class Actions:
         print "\timport <one_or_more_qbl_files>         Import data from QBL file to QBL memory."
         print "\tgraph <circiut_name>                   Display graphical scheme of circuit.."
         print "\trun <circiut_name>[:<step_number>]     Start running the simulation"
-        print "\t                                       and get final state. Use optional"
-        print "\t                                       <step_number> parameter to get state"
-        print "\t                                       for this step."
+        print "\t                                       and get final state."
         print
-        print "<circuit_name> may be also concatenation of many circuits: \"circ1+circ2\"."
+        print "\t                                       Use optional <step_number> parameter"
+        print "\t                                       to get state for this step."
+        print
+        print "\t                                       <circuit_name> may be also"
+        print "\t                                       concatenation of many circuits, f.e."
+        print "\t                                       \"circ1+circ2+circ3\"."
         print
 
     def dialog_action(self):
