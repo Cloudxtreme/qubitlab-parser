@@ -69,10 +69,6 @@ class Actions:
         print "AVAILABLE COMMANDS:"
         print "\thelp                                                           Show help."
         print
-        print "\tlist <one_or_more_qbl_files>                                   List of objects in QBL memory."
-        print "\tinfo <object_name> <one_or_more_qbl_files>                     Info about object in QBL memory."
-        print "\tgraph <circiut_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
-        print
         print "\trun <circuit_name>[:<step_number>] <one_or_more_qbl_files>     Start running the simulation"
         print "\t                                                               and get final state."
         print
@@ -82,6 +78,10 @@ class Actions:
         print "\t                                                               <circuit_name> may be also"
         print "\t                                                               concatenation of many circuits, f.e."
         print "\t                                                               \"circ1+circ2+circ3\"."
+        print
+        print "\tlist <one_or_more_qbl_files>                                   List of objects in QBL memory."
+        print "\tinfo <object_name> <one_or_more_qbl_files>                     Info about object in QBL memory."
+        print "\tgraph <circiut_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
         print
         print "EXAMPLE:"
         print "\t./qubitlab.py run circ1+circ2:2 examples/example1.qbl"
@@ -96,10 +96,6 @@ class Actions:
         print "\tquit                                   Exit the program."
         print "\thelp                                   Show help."
         print
-        print "\tlist                                   List of objects in QBL memory."
-        print "\tinfo <object_name>                     Info about objecti in QBL memory."
-        print "\timport <one_or_more_qbl_files>         Import data from QBL file to QBL memory."
-        print "\tgraph <circiut_name>                   Display graphical scheme of circuit.."
         print "\trun <circiut_name>[:<step_number>]     Start running the simulation"
         print "\t                                       and get final state."
         print
@@ -109,6 +105,11 @@ class Actions:
         print "\t                                       <circuit_name> may be also"
         print "\t                                       concatenation of many circuits, f.e."
         print "\t                                       \"circ1+circ2+circ3\"."
+        print
+        print "\tlist                                   List of objects in QBL memory."
+        print "\tinfo <object_name>                     Info about objecti in QBL memory."
+        print "\timport <one_or_more_qbl_files>         Import data from QBL file to QBL memory."
+        print "\tgraph <circiut_name>                   Display graphical scheme of circuit.."
         print
         print "EXAMPLE:"
         print "\trun circ1+circ2:2"
