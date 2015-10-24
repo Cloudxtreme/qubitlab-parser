@@ -41,6 +41,7 @@ class Actions:
 
         parser = Parser()
         parser.parse_code(file, self.qbl_memory)
+        pprint.pprint(self.qbl_memory.qbl_objects)
 
         return True
 
