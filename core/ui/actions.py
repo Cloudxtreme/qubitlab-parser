@@ -59,21 +59,21 @@ class Actions:
         print "python qubitlab.py <OPTIONS> <COMMAND>"
         print
         print "\tOPTIONS:"
-        print "\t--output <file_path>                                       Output file."
-        print "\t-o <file_path>                                             The same as \"--output\"."
-        print "\t--help <file_path>                                         Show help and ingore command."
-        print "\t-h <file_path>                                             The same as \"--help\"."
+        print "\t--output <file_path>                                           Output file."
+        print "\t-o <file_path>                                                 The same as \"--output\"."
+        print "\t--help <file_path>                                             Show help and ingore command."
+        print "\t-h <file_path>                                                 The same as \"--help\"."
         print
         print "\tCOMMANDS:"
-        print "\thelp                                                       Show help."
+        print "\thelp                                                           Show help."
         print
-        print "\tlist <one_or_more_qbl_files>                               List of objects in QBL memory."
-        print "\tinfo <object_name> <one_or_more_qbl_files>                 Info about object in QBL memory."
-        print "\tgraph <circiut_name> <one_or_more_qbl_files>               Display graphical scheme of circuit.."
-        print "\trun <circuit_name>[:<step_number>] <one_or_more_qbl_files> Start running the simulation"
-        print "\t                                                           and get final state. Use optional"
-        print "\t                                                           <step_number> parameter to get state"
-        print "\t                                                           for this step."
+        print "\tlist <one_or_more_qbl_files>                                   List of objects in QBL memory."
+        print "\tinfo <object_name> <one_or_more_qbl_files>                     Info about object in QBL memory."
+        print "\tgraph <circiut_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
+        print "\trun <circuit_name>[:<step_number>] <one_or_more_qbl_files>     Start running the simulation"
+        print "\t                                                               and get final state. Use optional"
+        print "\t                                                               <step_number> parameter to get state"
+        print "\t                                                               for this step."
         print
         print "<circuit_name> may be also concatenation of many circuits: \"circ1+circ2\"."
         print
