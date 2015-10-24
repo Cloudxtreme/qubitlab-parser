@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import copy
-import json
 from .ast_validation import *
 from .ast_converter import *
 
@@ -48,6 +47,5 @@ class Ast:
         self.ast_validation.valid_root(self.ast_tree)
 
     def update_qbl_memory(self):
-        #print json.dumps(self.ast_tree, sort_keys=True, indent=4)
         new_qbl_memory_data = self.ast_converter.get_qbl_memory_data(self.ast_tree)
-        print json.dumps(new_qbl_memory_data, sort_keys=True, indent=4)
+        self.qbl_memory.add_new_data(new_qbl_memory_data)

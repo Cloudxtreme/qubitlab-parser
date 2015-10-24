@@ -1,11 +1,9 @@
 TODO:
     - core features
-        - qbl_memory
-            - convert ast to qbl_memory_new_objects
-            - merge qbl_memory_new_objects to qbl_memory
         - simulator
         - diagram
         - parser
+            - "import <filename>" command
             - doc comments '##'
         - informer
 

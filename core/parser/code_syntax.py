@@ -32,8 +32,8 @@ class CodeSyntax:
             'define_qubit_value' : '(?P<value>' + cp['qubit_state'] + ')',
             'define_input'       : 'input:',
             'define_step'        : 'step:',
-            'adding_variables'   : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution']
-                    + '(?P<adding_arguments>' + cp['variable_name'] + '(' + cp['optional_space']+ '\+'
+            'concat_variables'   : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution']
+                    + '(?P<concatenation>' + cp['variable_name'] + '(' + cp['optional_space']+ '\+'
                     + cp['optional_space'] + cp['variable_name'] + ')*)',
             'add_bit_to_input'   : 'bit' + cp['required_space'] + '(?P<value>(0|1))',
             'add_qubit_to_input' : 'qubit' + cp['required_space'] + '(?P<value>(' + cp['qubit_state'] + '|'

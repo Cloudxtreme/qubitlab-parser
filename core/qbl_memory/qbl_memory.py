@@ -5,29 +5,18 @@
 class QblMemory:
 
     def __init__(self):
-        self.qbl_objects = {
-            'gates': {},
-            'circuits': {},
-            'states': {}
-        }
+        self.qbl_objects = {}
 
-        self.qbl_tmp_objects = {
-            'gates': {},
-            'circuits': {},
-            'states': {}
-        }
+    def add_new_data(self, qbl_memory_data):
+        for key, value in qbl_memory_data.iteritems():
+            self.qbl_objects[key] = value
 
-    def add_new_object(self, object_name, object_type, object_data):
-        pass
-
-    def commit_new_objects(self):
-        pass
-
-    def revert_new_objects(self):
-        pass
-
-    def remove_object(self, object_name):
-        pass
+    def remove_object(self, key):
+        if key in self.qbl_objects:
+            del self.qbl_objects[key]
+            return True
+        else:
+            return False
 
     def remove_all(self):
-        pass
+        self.qbl_objects = {}

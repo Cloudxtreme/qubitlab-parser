@@ -34,4 +34,3 @@ class CodeReader:
         line = re.sub(re.compile("#.*?\n" ) ,"" ,line)
         line = line.strip()
         return line
-

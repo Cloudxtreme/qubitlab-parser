@@ -53,7 +53,7 @@ class AstValidation:
                 },
                 'min_numb_of_children': 1
             },
-            'adding_variables': {
+            'concat_variables': {
                 'no_children': True
             },
             'add_bit_to_input': {
