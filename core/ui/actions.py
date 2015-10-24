@@ -61,8 +61,8 @@ class Actions:
         print "\tOPTIONS:"
         print "\t--output <file_path>                                           Output file."
         print "\t-o <file_path>                                                 The same as \"--output\"."
-        print "\t--help <file_path>                                             Show help and ingore command."
-        print "\t-h <file_path>                                                 The same as \"--help\"."
+        print "\t--help                                                         Show help and ingore command."
+        print "\t-h                                                             The same as \"--help\"."
         print
         print "\tCOMMANDS:"
         print "\thelp                                                           Show help."
