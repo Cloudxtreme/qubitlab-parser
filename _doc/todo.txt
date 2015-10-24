@@ -1,11 +1,11 @@
 TODO:
     - core features
+        - informer
         - simulator
         - diagram
         - parser
             - "import <filename>" command
             - doc comments '##'
-        - informer
 
     - new features
         - generate LaTeX diagrams
@@ -15,7 +15,4 @@ TODO:
         - ...
 
     - refactor
-        - split methods to smaller in:
-            - Parser/CodeReader
-        - print error replace by raise exception + try-except - in all code
         - using grammar in parser (for example https://pyparsing.wikispaces.com/)
