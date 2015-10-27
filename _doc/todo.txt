@@ -25,6 +25,7 @@ TODO:
             - remove parameters from constructors and create set-methods
         - don't use parameters that will be modify in methods
         - separate question-methods and function-methods
-        - separate try-catch block to individual method (no code before and after block and inside try only one method
+        - separate try-catch block to individual method (no code before and after try-catch block;
+          inside try-block only one method)
         - instead of long switch (or if-else) block use polymorphism and object factor design pattern
         - using grammar in parser (for example https://pyparsing.wikispaces.com/)
