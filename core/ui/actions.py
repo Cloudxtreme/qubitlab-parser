@@ -73,7 +73,7 @@ class Actions:
         print "\t                                                               and get final state."
         print
         print "\t                                                               Use optional <step_number> parameter"
-        print "\t                                                               to get state for this step."
+        print "\t                                                               to get state for given step."
         print
         print "\t                                                               <circuit_name> may be also"
         print "\t                                                               concatenation of many circuits, f.e."
@@ -100,7 +100,7 @@ class Actions:
         print "\t                                       and get final state."
         print
         print "\t                                       Use optional <step_number> parameter"
-        print "\t                                       to get state for this step."
+        print "\t                                       to get state for given step."
         print
         print "\t                                       <circuit_name> may be also"
         print "\t                                       concatenation of many circuits, f.e."
