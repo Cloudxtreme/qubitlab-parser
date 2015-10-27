@@ -1,6 +1,10 @@
 TODO:
     - core features
         - simulator
+            - project
+                - structure of classes
+                - how to join measures with step expressions to create one object to represent step
+                  in QubitLab Simulator (read qclib documentation)
             - build circuit
             - run simulation
             - get final state
