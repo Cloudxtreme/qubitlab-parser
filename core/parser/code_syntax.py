@@ -24,9 +24,9 @@ class CodeSyntax:
         # Line patterns
         lp = {
             'create_qubit_state' : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + \
-                    'QubitState:',
-            'create_gate'        : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'Gate:',
-            'create_circuit'     : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'Circuit:',
+                    'qstate:',
+            'create_gate'        : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'gate:',
+            'create_circuit'     : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['attribution'] + 'circuit:',
             'define_vector'      : '(?P<vector_values>' + cp['number'] + '(' + cp['optional_space'] + ','
                     + cp['optional_space'] + cp['number'] + ')*)',
             'define_qubit_value' : '(?P<value>' + cp['qubit_state'] + ')',
