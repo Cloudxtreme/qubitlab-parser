@@ -34,7 +34,7 @@ circ1 = circuit:                            ## Description of circuit.
         gate1  0..1
         gate1  3..4
     step:
-        mesure all
+        measure all
 
 circ2 = circuit:
     step:

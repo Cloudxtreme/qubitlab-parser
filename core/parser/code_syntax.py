@@ -38,7 +38,7 @@ class CodeSyntax:
             'add_bit_to_input'   : 'bit' + cp['required_space'] + '(?P<value>(0|1))',
             'add_qubit_to_input' : 'qubit' + cp['required_space'] + '(?P<value>(' + cp['qubit_state'] + '|'
                     + cp['variable_name'] + '))',
-            'add_item_to_step'   : '(?P<item_name>' + cp['variable_name'] + ')' + cp['required_space']
+            'add_item_to_step'   : '(?P<item_name>(' + cp['variable_name'] + '|measure))' + cp['required_space']
                     + '(?P<value>(' + cp['gate_range'] + '|' + cp['natural_number'] + '|all))',
         }
 
