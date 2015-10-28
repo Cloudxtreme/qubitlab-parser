@@ -1,5 +1,6 @@
 TODO:
     - core features
+        - parser: variable name must be different than python keywords and qbl-language keywords
         - simulator
             - project
                 - structure of classes
