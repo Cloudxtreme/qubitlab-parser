@@ -1,9 +1,23 @@
 TODO:
     - core features
-        - parser: lowercase of variable name must be different than lowercase of:
-            - python keyword list: http://stackoverflow.com/questions/14595922/list-of-python-keywords
-            - qbl keyword list: 'qstate', 'gate', 'circuit', 'input', 'step', 'qubit', 'bit', 'measure', 'all'
-            - qclib built-in variables
+        - parser
+            - lowercase of variable name must be different than lowercase of:
+                - python keyword list: http://stackoverflow.com/questions/14595922/list-of-python-keywords
+                - qbl keyword list: 'qstate', 'gate', 'circuit', 'input', 'step', 'qubit', 'bit', 'measure', 'all'
+            - valid variables
+                - if has set
+                - if has expected type
+                - if any of parents has the same variable name like children
+                - if there are no recursion in set variables
+            - split assignment and expression
+                - valid expression
+                    - check returned type
+                - valid assignment
+        - qbl_memory
+            - set qclib built-in variables
+                - at beginning
+                - after remove all
+                - (qclib built-in variables may be cover up by user variables)
         - simulator
             - project
                 - structure of classes
