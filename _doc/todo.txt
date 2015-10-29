@@ -1,6 +1,7 @@
 TODO:
     - core features
         - parser
+            - change name from attribution to assignment
             - lowercase of variable name must be different than lowercase of:
                 - python keyword list: http://stackoverflow.com/questions/14595922/list-of-python-keywords
                 - qbl keyword list: 'qstate', 'gate', 'circuit', 'input', 'step', 'qubit', 'bit', 'measure', 'all'
@@ -9,6 +10,7 @@ TODO:
                 - if has expected type
                 - if any of parents has the same variable name like children
                 - if there are no recursion in set variables
+            - set data to variables in qbl_memory
             - split assignment and expression
                 - valid expression
                     - check returned type
@@ -40,6 +42,10 @@ TODO:
         - new objects (gates, math elements, etc)
         - ...
 
+    - improvement
+        - references to the same values of variables in qbl_memory
+        - using grammar in parser (for example https://pyparsing.wikispaces.com/)
+
     - refactoring
         - move help methods to separate class from actions
         - reduce number of parameters in functions
@@ -50,7 +56,3 @@ TODO:
         - separate try-catch block to individual method (no code before and after try-catch block;
           inside try-block only one method)
         - instead of long switch (or if-else) block use polymorphism and object factory design pattern
-        - parser
-            - change name from attribution to assignment
-            - split assignment and expression (in future will be more expressions)
-        - using grammar in parser (for example https://pyparsing.wikispaces.com/)
