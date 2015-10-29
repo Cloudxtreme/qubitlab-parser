@@ -10,7 +10,7 @@ TODO:
                 - if has expected type
                 - if any of parents has the same variable name like children
                 - if there are no recursion in set variables
-            - set data to variables in qbl_memory
+            - set real data to variables in qbl_memory
             - split assignment and expression
                 - valid expression
                     - check returned type
