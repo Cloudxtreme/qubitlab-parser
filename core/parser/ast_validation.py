@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import keyword
+
 
 class AstValidation:
 
@@ -67,18 +69,32 @@ class AstValidation:
             },
         }
 
+        qbl_kwlist = ['qstate', 'gate', 'circuit', 'input', 'step', 'qubit', 'bit', 'measure', 'all']
+        self.variable_name_blacklist = keyword.kwlist + qbl_kwlist
+
     def valid_root(self, root):
         for index, node_child in enumerate(root):
             if not self.valid_node(node_child, root, index):
                 return False
 
     def valid_node(self, node, parent, child_index):
+        if not self.valid_node_variable_name(node):
+            return False
         if not self.valid_node_data(node, parent, child_index):
             return False
         for index, node_child in enumerate(node['children']):
             if not self.valid_node(node_child, node, index):
                 return False
         return True
+
+    def valid_node_variable_name(self, node):
+        if 'args' in node and 'variable_name' in node['args']:
+            variable_name = node['args']['variable_name']
+            if variable_name.lower() in self.variable_name_blacklist:
+                raise SyntaxError('forbidden variable name, line: ' + str(node['line_number']))
+                return False
+        return True
+
 
     def valid_node_data(self, node, parent, child_index):
         node_settings = self.nodes_settings[node['pattern_key']]
@@ -88,7 +104,7 @@ class AstValidation:
             return False
         if 'min_numb_of_children' in node_settings and not self.valid_min_numb_of_children(node_settings, node):
             return False
-        if 'no_children' in node_settings and not self.valid_no_children(node_settings, node):
+        if 'no_children' in node_settings and not self.valid_no_children(node):
             return False
         if 'not_after_node' in node_settings \
                 and not self.valid_not_after_node(node_settings, node, parent, child_index):
@@ -125,7 +141,7 @@ class AstValidation:
             return False
         return True
 
-    def valid_no_children(self, node_settings, node):
+    def valid_no_children(self, node):
         if len(node['children']) > 0:
             first_node_child = node['children'][0]
             raise SyntaxError('illegal nested command, line: ' + str(first_node_child['line_number']))
