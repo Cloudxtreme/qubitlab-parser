@@ -1,7 +1,6 @@
 TODO:
     - core features
         - parser
-            - change name from attribution to assignment
             - lowercase of variable name must be different than lowercase of:
                 - python keyword list: http://stackoverflow.com/questions/14595922/list-of-python-keywords
                 - qbl keyword list: 'qstate', 'gate', 'circuit', 'input', 'step', 'qubit', 'bit', 'measure', 'all'
