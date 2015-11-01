@@ -7,7 +7,11 @@ import re
 class CodeSyntax:
 
     def __init__(self):
-        # Code patterns
+        self.description_comment = '(?P<text_line>[a-zA-Z0-9\\t _\-+\.,!@#$%^&*()\\\\|/?<>"[\]{}\'~`=;:]*)'
+        self.code_patterns = self.get_code_patterns()
+        self.line_patterns = self.get_line_patterns()
+
+    def get_code_patterns(self):
         cp = {
             'variable_name'     : '[a-zA-Z_]+[a-zA-Z_0-9]*',
             'optional_space'    : '( |\\t)*',
@@ -16,12 +20,14 @@ class CodeSyntax:
         cp['natural_number']        = '\d+'
         cp['number_unbracketed']    = '(-?\d+(\.\d+)?((\+|-)\d+(\.\d+)j)?|-?\d+(\.\d+)j)'
         cp['number']                = '(\(' + cp['number_unbracketed'] + '\)|' + cp['number_unbracketed'] + ')'
-        cp['assignment']           = cp['optional_space'] + '=' + cp['optional_space']
-        cp['qstate']           = cp['number'] + '\|0>' + cp['required_space'] + '\+' + cp['required_space'] + \
+        cp['assignment']            = cp['optional_space'] + '=' + cp['optional_space']
+        cp['qstate']                = cp['number'] + '\|0>' + cp['required_space'] + '\+' + cp['required_space'] + \
                 cp['number'] + '\|1>'
         cp['gate_range']            = cp['natural_number'] + '\.\.' + cp['natural_number']
+        return cp
 
-        # Line patterns
+    def get_line_patterns(self):
+        cp = self.code_patterns
         lp = {
             'create_qstate' : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['assignment'] + \
                     'qstate:',
@@ -41,11 +47,7 @@ class CodeSyntax:
             'add_item_to_step'   : '(?P<item_name>(' + cp['variable_name'] + '|measure))' + cp['required_space']
                     + '(?P<value>(' + cp['gate_range'] + '|' + cp['natural_number'] + '|all))',
         }
-
-        self.description_comment = '(?P<text_line>[a-zA-Z0-9\\t _\-+\.,!@#$%^&*()\\\\|/?<>"[\]{}\'~`=;:]*)'
-
-        self.code_patterns = cp
-        self.line_patterns = lp
+        return lp
 
     def recognize_line(self, line, line_number):
         for pattern_key, pattern in self.line_patterns.iteritems():
