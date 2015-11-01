@@ -64,7 +64,7 @@ class Actions:
         print "OPTIONS:"
         print "\t--output <file_path>                                           Output file."
         print "\t-o <file_path>                                                 The same as \"--output\"."
-        print "\t--help                                                         Show help and ingore command."
+        print "\t--help                                                         Show help and ignore command."
         print "\t-h                                                             The same as \"--help\"."
         print
         print "AVAILABLE COMMANDS:"
@@ -82,7 +82,7 @@ class Actions:
         print
         print "\tlist <one_or_more_qbl_files>                                   List of objects in QBL memory."
         print "\tinfo <object_name> <one_or_more_qbl_files>                     Info about object in QBL memory."
-        print "\tgraph <circiut_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
+        print "\tgraph <circuit_name> <one_or_more_qbl_files>                   Display graphical scheme of circuit.."
         print
         print "EXAMPLE:"
         print "\t./qubitlab.py run circ1+circ2:2 examples/example1.qbl"
@@ -98,7 +98,7 @@ class Actions:
         print "\tquit                                   Exit the program."
         print "\thelp                                   Show help."
         print
-        print "\trun <circiut_name>[:<step_number>]     Start running the simulation"
+        print "\trun <circuit_name>[:<step_number>]     Start running the simulation"
         print "\t                                       and get final state."
         print
         print "\t                                       Use optional <step_number> parameter"
@@ -109,9 +109,9 @@ class Actions:
         print "\t                                       \"circ1+circ2+circ3\"."
         print
         print "\tlist                                   List of objects in QBL memory."
-        print "\tinfo <object_name>                     Info about objecti in QBL memory."
+        print "\tinfo <object_name>                     Info about object in QBL memory."
         print "\timport <one_or_more_qbl_files>         Import data from QBL file to QBL memory."
-        print "\tgraph <circiut_name>                   Display graphical scheme of circuit.."
+        print "\tgraph <circuit_name>                   Display graphical scheme of circuit.."
         print
         print "EXAMPLE:"
         print "\trun circ1+circ2:2"
