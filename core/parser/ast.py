@@ -15,7 +15,7 @@ class Ast:
         self.current_indentation_level = 0
         self.current_line_data = {}
         self.ast_validation = AstValidation()
-        self.qbl_memory_builder = QblMemoryBuilder()
+        self.qbl_memory_builder = QblMemoryBuilder(self.qbl_memory)
 
     def process_line(self, line_data, indentation_level, line_number):
         self.prepare_line_data(line_data, indentation_level, line_number)
@@ -47,5 +47,5 @@ class Ast:
         self.ast_validation.valid_root(self.ast_tree)
 
     def update_qbl_memory(self):
-        new_qbl_memory_data = self.qbl_memory_builder.get_qbl_memory_data(self.ast_tree)
+        new_qbl_memory_data = self.qbl_memory_builder.get_qbl_memory_new_data(self.ast_tree)
         self.qbl_memory.add_new_data(new_qbl_memory_data)

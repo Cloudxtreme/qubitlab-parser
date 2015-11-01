@@ -1,17 +1,5 @@
 TODO:
     - core features
-        - parser
-            - valid variables
-                - if has set
-                - if has expected type
-                - if any of parents has the same variable name like children
-                - if there are no recursion in set variables
-            - set real data to variables in qbl_memory
-        - qbl_memory
-            - set qclib built-in variables
-                - at beginning
-                - after remove all
-                - (qclib built-in variables may be cover up by user variables)
         - simulator
             - project
                 - structure of classes
@@ -24,6 +12,7 @@ TODO:
         - informer
         - diagram
         - parser
+            - add <file_name> to error message before line number
             - "import <filename>" command
             - doc comments '##'
 

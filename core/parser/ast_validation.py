@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from .variable_validation import *
+import keyword
 
 
 class AstValidation:
     def __init__(self):
-        self.variable_validation = VariableValidation()
+        qbl_kwlist = ['qstate', 'gate', 'circuit', 'input', 'step', 'qubit', 'bit', 'measure', 'all']
+        self.variable_name_blacklist = keyword.kwlist + qbl_kwlist
         self.nodes_settings = self.get_node_settings()
 
     def get_node_settings(self):
@@ -123,7 +124,7 @@ class AstValidation:
                 return False
 
     def valid_node(self, node, parent, child_index):
-        if not self.variable_validation.valid_node_variable_name(node):
+        if not self.valid_node_variable_name(node):
             return False
         if not self.valid_node_data(node, parent, child_index):
             return False
@@ -208,4 +209,11 @@ class AstValidation:
                 if counter > 1:
                     raise SyntaxError('given command can occur only once in one code node, line: ' +
                                       str(node['line_number']))
+        return True
+
+    def valid_node_variable_name(self, node):
+        if 'args' in node and 'variable_name' in node['args']:
+            variable_name = node['args']['variable_name']
+            if variable_name.lower() in self.variable_name_blacklist:
+                raise SyntaxError('forbidden variable name, line: ' + str(node['line_number']))
         return True

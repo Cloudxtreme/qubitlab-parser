@@ -119,9 +119,7 @@ class Actions:
 
     @staticmethod
     def get_header():
-        header = """== QubitLab v.0 ==
-        Quantum Computing Simulator
-        www.qubitlab.net"""
+        header = "== QubitLab v.0 ==\nQuantum Computing Simulator\nwww.qubitlab.net\n"
         return header
 
     def dialog_action(self):

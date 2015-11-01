@@ -37,6 +37,12 @@ circ1 = circuit:                            ## Description of circuit.
         measure all
 
 circ2 = circuit:
+    input:
+        qubit  ket0
+        bit    1
+        bit    0
+        qubit  0.5|0> + (0.1+0.7j)|1>
+        qubit  psi
     step:
         CNOT   0..1     # from 0 to 1
         H      2
@@ -52,6 +58,8 @@ circ4 = circ2 + circ3   # merge circuits
                         # input in circ2 is required if circ4 will be run
                         # in circ2 can be only input
                         # input from circ3 is not used during circ4 running
+
+circ5 = circ4 + circ4
 
 
 # Usage:
