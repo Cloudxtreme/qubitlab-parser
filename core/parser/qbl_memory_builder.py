@@ -3,6 +3,7 @@
 
 import re
 
+
 class QblMemoryBuilder:
 
     def __init__(self):
@@ -19,6 +20,7 @@ class QblMemoryBuilder:
             self.append_variable(variable)
 
     def get_variable(self, ast_node):
+        variable = None
         if 'create_qstate' == ast_node['pattern_key']:
             variable = self.get_qstate(ast_node)
         if 'create_gate' == ast_node['pattern_key']:
@@ -35,7 +37,8 @@ class QblMemoryBuilder:
             'value': variable['value']
         }
 
-    def get_qstate(self, ast_node):
+    @staticmethod
+    def get_qstate(ast_node):
         value = ast_node['children'][0]['args']['value']
         value = value.strip()
         return {
@@ -44,7 +47,8 @@ class QblMemoryBuilder:
             'value': value
         }
 
-    def get_gate(self, ast_node):
+    @staticmethod
+    def get_gate(ast_node):
         matrix = []
         for node_child in ast_node['children']:
             vector = node_child['args']['vector_values']
@@ -57,7 +61,7 @@ class QblMemoryBuilder:
         }
 
     def get_circuit(self, ast_node):
-        data = { 'input' : [], 'steps' : []}
+        data = {'input': [], 'steps': []}
         circuit_children = ast_node['children']
         for child in circuit_children:
             if 'define_input' == child['pattern_key']:
@@ -70,19 +74,22 @@ class QblMemoryBuilder:
             'value': data
         }
 
-    def get_circuit_input(self, input_node):
+    @staticmethod
+    def get_circuit_input(input_node):
         data = []
         for input_item in input_node['children']:
             data.append(input_item['args'])
         return data
 
-    def get_circuit_step(self, step_node):
+    @staticmethod
+    def get_circuit_step(step_node):
         data = []
         for step_item in step_node['children']:
             data.append(step_item['args'])
         return data
 
-    def get_concatenation(self, ast_node):
+    @staticmethod
+    def get_concatenation(ast_node):
         data = ast_node['args']['concatenation']
         return {
             'name': ast_node['args']['variable_name'],
