@@ -48,7 +48,7 @@ circ3 = circuit:
         SWAP   0..1
         SWAP   2..3
 
-circ4 = circ2 + circ3   # circuit concatenation
+circ4 = circ2 + circ3   # merge circuits
                         # input in circ2 is required if circ4 will be run
                         # in circ2 can be only input
                         # input from circ3 is not used during circ4 running

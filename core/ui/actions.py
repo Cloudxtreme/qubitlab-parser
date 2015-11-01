@@ -77,7 +77,7 @@ class Actions:
         print "\t                                                               to get state for given step."
         print
         print "\t                                                               <circuit_name> may be also"
-        print "\t                                                               concatenation of many circuits, f.e."
+        print "\t                                                               circuit merge expression, f.e."
         print "\t                                                               \"circ1+circ2+circ3\"."
         print
         print "\tlist <one_or_more_qbl_files>                                   List of objects in QBL memory."
@@ -105,7 +105,7 @@ class Actions:
         print "\t                                       to get state for given step."
         print
         print "\t                                       <circuit_name> may be also"
-        print "\t                                       concatenation of many circuits, f.e."
+        print "\t                                       circuit merge expression, f.e."
         print "\t                                       \"circ1+circ2+circ3\"."
         print
         print "\tlist                                   List of objects in QBL memory."

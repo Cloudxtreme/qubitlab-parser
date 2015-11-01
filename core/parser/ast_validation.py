@@ -18,7 +18,7 @@ class AstValidation:
             'define_qubit_value': self.get_define_qubit_value_settings(),
             'define_input': self.get_define_input_settings(),
             'define_step': self.get_define_step_settings(),
-            'concat_variables': self.get_concat_variables_settings(),
+            'merge_circuits': self.get_merge_circuits_settings(),
             'add_bit_to_input': self.get_add_bit_to_input_settings(),
             'add_qubit_to_input': self.get_add_qubit_to_input_settings(),
             'add_item_to_step': self.get_add_item_to_step_settings(),
@@ -94,7 +94,7 @@ class AstValidation:
         }
 
     @staticmethod
-    def get_concat_variables_settings():
+    def get_merge_circuits_settings():
         return {
             'no_children': True
         }

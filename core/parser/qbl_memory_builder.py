@@ -27,8 +27,8 @@ class QblMemoryBuilder:
             variable = self.get_gate(ast_node)
         if 'create_circuit' == ast_node['pattern_key']:
             variable = self.get_circuit(ast_node)
-        if 'concat_variables' == ast_node['pattern_key']:
-            variable = self.get_concatenation(ast_node)
+        if 'merge_circuits' == ast_node['pattern_key']:
+            variable = self.get_circuit_merge(ast_node)
         return variable
 
     def append_variable(self, variable):
@@ -89,10 +89,10 @@ class QblMemoryBuilder:
         return data
 
     @staticmethod
-    def get_concatenation(ast_node):
-        data = ast_node['args']['concatenation']
+    def get_circuit_merge(ast_node):
+        data = ast_node['args']['circuit_merge_expression']
         return {
             'name': ast_node['args']['variable_name'],
-            'type': 'Concatenation',
+            'type': 'Circuit',
             'value': data
         }
