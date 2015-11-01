@@ -38,7 +38,6 @@ class Router:
                 print "[WARNING] In dialog mode '-o' and '--output' options are ignored."
 
     def call_action(self):
-
         if self.current_action == 'list':
             self.actions.list_action()
         elif self.current_action == 'info':
@@ -47,7 +46,7 @@ class Router:
             if len(self.args) < 2:
                 self.actions.show_params_numb_error('run')
                 sys.exit(2)
-            if False == self.actions.import_action([self.args[1]]):
+            if not self.actions.import_action([self.args[1]]):
                 sys.exit(2)
             self.actions.run_action()
         elif self.current_action == 'help':

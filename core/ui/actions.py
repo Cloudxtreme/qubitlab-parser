@@ -35,12 +35,12 @@ class Actions:
 
         qbl_file = args[0]
         if qbl_file:
-            if os.path.isfile(file):
+            if os.path.isfile(qbl_file):
                 if not qbl_file.endswith('.qbl'):
-                    print ("[ERROR] '%s' must have '.qbl' extension." % file)
+                    print ("[ERROR] '%s' must have '.qbl' extension." % qbl_file)
                     return False
             else:
-                print ("[ERROR] '%s' is incorrect path to qbl file." % file)
+                print ("[ERROR] '%s' is incorrect path to qbl file." % qbl_file)
                 return False
 
         parser = Parser()
@@ -120,12 +120,11 @@ class Actions:
     @staticmethod
     def get_header():
         header = """== QubitLab v.0 ==
-Quantum Computing Simulator
-www.qubitlab.net"""
+        Quantum Computing Simulator
+        www.qubitlab.net"""
         return header
 
     def dialog_action(self):
-
         print
         print self.get_header()
         print
