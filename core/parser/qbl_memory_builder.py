@@ -19,8 +19,8 @@ class QblMemoryBuilder:
             self.append_variable(variable)
 
     def get_variable(self, ast_node):
-        if 'create_qubit_state' == ast_node['pattern_key']:
-            variable = self.get_qubit_state(ast_node)
+        if 'create_qstate' == ast_node['pattern_key']:
+            variable = self.get_qstate(ast_node)
         if 'create_gate' == ast_node['pattern_key']:
             variable = self.get_gate(ast_node)
         if 'create_circuit' == ast_node['pattern_key']:
@@ -35,7 +35,7 @@ class QblMemoryBuilder:
             'value': variable['value']
         }
 
-    def get_qubit_state(self, ast_node):
+    def get_qstate(self, ast_node):
         value = ast_node['children'][0]['args']['value']
         value = value.strip()
         return {

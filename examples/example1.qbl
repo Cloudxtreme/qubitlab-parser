@@ -60,17 +60,11 @@ circ4 = circ2 + circ3   # circuit concatenation
 # qbl> import examples/example1.qbl
 # qbl> run circ1
 # qbl> run circ1 + circ4
-# qbl> circuits                         # list of circuits in memory
-# qbl> gates                            # list of gates in memory
-# qbl> qubit_states                     # list of states in memory
-# qbl> objects                          # list of all objects in memory
+# qbl> list                             # list of all objects in memory
 # qbl> info <object_name>               # info about object
 
 # Bash:
-# $ run circ1 examples/example1.qbl
-# $ run circA + circB file1.qbl file2.qbl
-# $ circuits file.qbl                         # list of circuits in memory
-# $ gates file.qbl                            # list of gates in memory
-# $ qubit_states file.qbl                     # list of states in memory
-# $ objects file.qbl                          # list of all objects in memory
-# $ info <object_name> file.qbl               # info about object
+# $ qubitlab run circ1 examples/example1.qbl
+# $ qubitlab run circA + circB file1.qbl file2.qbl
+# $ qubitlab list file.qbl                              # list of all objects in memory
+# $ qubitlab info <object_name> file.qbl                # info about object
