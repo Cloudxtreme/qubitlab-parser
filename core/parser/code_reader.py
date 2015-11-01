@@ -5,6 +5,7 @@ from .code_syntax import *
 from .ast import *
 from .indentation import *
 
+
 class CodeReader:
 
     def __init__(self, qbl_memory):
@@ -16,10 +17,10 @@ class CodeReader:
         ast = Ast(self.qbl_memory)
         code_syntax = CodeSyntax()
 
-        line_number = 0;
+        line_number = 0
         with open(file_path) as f:
             for line in f:
-                line_number = line_number + 1
+                line_number += 1
                 indentation_level = indentation.get_indentation_level(line, line_number)
                 line_code = self.remove_comment_and_trim(line)
                 if len(line_code) == 0:
@@ -30,7 +31,8 @@ class CodeReader:
         ast.valid_ast_tree()
         ast.update_qbl_memory()
 
-    def remove_comment_and_trim(self, line):
-        line = re.sub(re.compile("#.*?\n" ) ,"" ,line)
+    @staticmethod
+    def remove_comment_and_trim(line):
+        line = re.sub(re.compile("#.*?\n"), "", line)
         line = line.strip()
         return line

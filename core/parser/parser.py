@@ -3,9 +3,14 @@
 
 from .code_reader import *
 
+
 class Parser:
 
-    def parse_code(self, file_path, qbl_memory):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def parse_code(file_path, qbl_memory):
         code_reader = CodeReader(qbl_memory)
         try:
             code_reader.read_file(file_path)

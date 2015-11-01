@@ -20,10 +20,12 @@ class Actions:
         pprint.pprint(self.qbl_memory.qbl_objects)
         print
 
-    def info_action(self):
+    @staticmethod
+    def info_action():
         print "Info about object in QBL memory..."
 
-    def graph_action(self):
+    @staticmethod
+    def graph_action():
         print "Display graphical scheme of circuit..."
 
     def import_action(self, args):
@@ -31,12 +33,10 @@ class Actions:
             self.show_params_numb_error('import')
             return False
 
-        file = args[0]
-        if file:
+        qbl_file = args[0]
+        if qbl_file:
             if os.path.isfile(file):
-                if file.endswith('.qbl'):
-                    self.file = file
-                else:
+                if not qbl_file.endswith('.qbl'):
                     print ("[ERROR] '%s' must have '.qbl' extension." % file)
                     return False
             else:
@@ -44,11 +44,12 @@ class Actions:
                 return False
 
         parser = Parser()
-        parser.parse_code(file, self.qbl_memory)
+        parser.parse_code(qbl_file, self.qbl_memory)
 
         return True
 
-    def run_action(self):
+    @staticmethod
+    def run_action():
         print "Start running the simulation..."
 
     def help_action(self):
@@ -87,7 +88,8 @@ class Actions:
         print "\t./qubitlab.py run circ1+circ2:2 examples/example1.qbl"
         print
 
-    def dialog_help_action(self):
+    @staticmethod
+    def dialog_help_action():
         print
         print "=== HELP ==="
         print
@@ -115,10 +117,11 @@ class Actions:
         print "\trun circ1+circ2:2"
         print
 
-    def get_header(self):
-        header =  "== QubitLab v.0 ==\n" \
-                + "Quantum Computing Simulator\n" \
-                + "www.qubitlab.net"
+    @staticmethod
+    def get_header():
+        header = """== QubitLab v.0 ==
+Quantum Computing Simulator
+www.qubitlab.net"""
         return header
 
     def dialog_action(self):
@@ -133,7 +136,7 @@ class Actions:
                 command_line = sys.stdin.readline().strip()
                 command_items = re.split('\s+', command_line)
                 if len(command_items) == 0:
-                    continue;
+                    continue
                 command = command_items.pop(0).lower()
                 command_args = command_items
             except KeyboardInterrupt:
@@ -163,10 +166,12 @@ class Actions:
             print "[ERROR] Incorrect command!"
             print "Type 'help' to show available commands."
 
-    def error_action(self):
+    @staticmethod
+    def error_action():
         print "[ERROR] Incorrect action."
         sys.exit(2)
 
-    def show_params_numb_error(self, command):
+    @staticmethod
+    def show_params_numb_error(command):
         print "[ERROR] Incorrect number of parameters for command \"%s\"" % command
         print "Type 'help' to show available commands."

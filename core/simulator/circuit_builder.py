@@ -16,11 +16,17 @@ class CircuitBuilder:
         circuit_object = self.get_circuit_object(circuit_structure)
         return circuit_object
 
-    def get_circuit_qbl_data(self, circuit_name):
+    @staticmethod
+    def get_circuit_qbl_data(circuit_name):
+        print circuit_name
         return {}
 
-    def replace_variables_to_structures(self, circuit_qbl_data):
+    @staticmethod
+    def replace_variables_to_structures(circuit_qbl_data):
+        print circuit_qbl_data
         return {}
 
-    def get_circuit_object(self, circuit_structure):
+    @staticmethod
+    def get_circuit_object(circuit_structure):
+        print circuit_structure
         return {}

@@ -22,7 +22,8 @@ class Indentation:
             indentation_level = 0
             return indentation_level
 
-    def count_indentations(self, line):
+    @staticmethod
+    def count_indentations(line):
         m = re.search('^(\t| )*', line)
         line_indentation = m.group(0)
         spaces_numb = line_indentation.count(' ')
@@ -44,8 +45,8 @@ class Indentation:
 
     def get_indentation_level_for_tabs(self, tabs_numb, line_number):
         if self.indentation_type is None:
-            indentation_type = 'tabs'
-        if indentation_type == 'tabs':
+            self.indentation_type = 'tabs'
+        if self.indentation_type == 'tabs':
             indentation_level = tabs_numb
             return indentation_level
         else:
