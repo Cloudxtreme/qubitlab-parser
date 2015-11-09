@@ -3,6 +3,7 @@
 # This is example of file writen in experimental QBL Language.
 # QBL Language lets you to define quantum circuits
 # and then you can run simulation of this circuits in QubitLab.
+# This is not real circuit - only example of code.
 
 
 gate1 = gate:                               ## Description of gate. It must start from the first line
@@ -12,16 +13,16 @@ gate1 = gate:                               ## Description of gate. It must star
                                             ## This description will be displayed after using 'info <object_name>'
                                             ## command.
 
-psi = qstate:                           ## Description of qubit state.
+psi = qstate:                               ## Description of qubit state.
     0.5|0> + (0.1+0.7j)|1>
 
 circ1 = circuit:                            ## Description of circuit.
     input:                                  ## second line
-        qubit  ket0
-        bit    1
-        bit    0
-        qubit  0.5|0> + (0.1+0.7j)|1>
-        qubit  psi
+        ket0
+        ket1
+        ket0
+        0.5|0> + (0.1+0.7j)|1>
+        psi
     step:
         CNOT   0..1     # from 0 to 1
         H      2
@@ -38,11 +39,11 @@ circ1 = circuit:                            ## Description of circuit.
 
 circ2 = circuit:
     input:
-        qubit  ket0
-        bit    1
-        bit    0
-        qubit  0.5|0> + (0.1+0.7j)|1>
-        qubit  psi
+        ket0
+        ket1
+        ket0
+        0.5|0> + (0.1+0.7j)|1>
+        psi
     step:
         CNOT   0..1     # from 0 to 1
         H      2

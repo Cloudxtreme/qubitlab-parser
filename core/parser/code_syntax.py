@@ -18,7 +18,7 @@ class CodeSyntax:
             'required_space'    : '( |\\t)+',
         }
         cp['natural_number']        = '\d+'
-        cp['number_unbracketed']    = '(-?\d+(\.\d+)?((\+|-)\d+(\.\d+)j)?|-?\d+(\.\d+)j)'
+        cp['number_unbracketed']    = '(-?\d+(\.\d+)?((\+|-)\d+(\.\d+)?j)?|-?\d+(\.\d+)?j)'
         cp['number']                = '(\(' + cp['number_unbracketed'] + '\)|' + cp['number_unbracketed'] + ')'
         cp['assignment']            = cp['optional_space'] + '=' + cp['optional_space']
         cp['qstate']                = cp['number'] + '\|0>' + cp['required_space'] + '\+' + cp['required_space'] + \
@@ -41,9 +41,7 @@ class CodeSyntax:
             'merge_circuits'   : '(?P<variable_name>' + cp['variable_name'] + ')' + cp['assignment']
                     + '(?P<circuit_merge_expression>' + cp['variable_name'] + '(' + cp['optional_space']+ '\+'
                     + cp['optional_space'] + cp['variable_name'] + ')*)',
-            'add_bit_to_input'   : 'bit' + cp['required_space'] + '(?P<value>(0|1))',
-            'add_qubit_to_input' : 'qubit' + cp['required_space'] + '(?P<value>(' + cp['qstate'] + '|'
-                    + cp['variable_name'] + '))',
+            'add_qubit_to_input' : '(?P<value>(' + cp['qstate'] + '|' + cp['variable_name'] + '))',
             'add_item_to_step'   : '(?P<item_name>(' + cp['variable_name'] + '|measure))' + cp['required_space']
                     + '(?P<value>(' + cp['gate_range'] + '|' + cp['natural_number'] + '|all))',
         }

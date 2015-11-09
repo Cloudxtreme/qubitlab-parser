@@ -20,7 +20,6 @@ class AstValidation:
             'define_input': self.get_define_input_settings(),
             'define_step': self.get_define_step_settings(),
             'merge_circuits': self.get_merge_circuits_settings(),
-            'add_bit_to_input': self.get_add_bit_to_input_settings(),
             'add_qubit_to_input': self.get_add_qubit_to_input_settings(),
             'add_item_to_step': self.get_add_item_to_step_settings(),
         }
@@ -75,8 +74,8 @@ class AstValidation:
     def get_define_input_settings():
         return {
             'allowed_children': {
-                'add_bit_to_input': True,
                 'add_qubit_to_input': True,
+                'define_qubit_value': True,
             },
             'not_after_node': {
                 'define_step': True
@@ -96,12 +95,6 @@ class AstValidation:
 
     @staticmethod
     def get_merge_circuits_settings():
-        return {
-            'no_children': True
-        }
-
-    @staticmethod
-    def get_add_bit_to_input_settings():
         return {
             'no_children': True
         }
