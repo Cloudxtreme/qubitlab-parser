@@ -12,6 +12,7 @@ class AstValidation:
 
     def get_node_settings(self):
         node_settings = {
+            'root': self.get_root_settings(),
             'create_qstate': self.get_create_qstate_settings(),
             'create_gate': self.get_create_gate_settings(),
             'create_circuit': self.get_create_circuit_settings(),
@@ -24,6 +25,17 @@ class AstValidation:
             'add_item_to_step': self.get_add_item_to_step_settings(),
         }
         return node_settings
+
+    @staticmethod
+    def get_root_settings():
+        return {
+            'allowed_children': {
+                'create_qstate': True,
+                'create_gate': True,
+                'create_circuit': True,
+                'merge_circuits': True,
+            },
+        }
 
     @staticmethod
     def get_create_qstate_settings():
@@ -112,6 +124,8 @@ class AstValidation:
         }
 
     def valid_root(self, root):
+        if not self.valid_root_data(root):
+            return False
         for index, node_child in enumerate(root):
             if not self.valid_node(node_child, root, index):
                 return False
@@ -125,6 +139,11 @@ class AstValidation:
             if not self.valid_node(node_child, node, index):
                 return False
         return True
+
+    def valid_root_data(self, node):
+        node_settings = self.nodes_settings['root']
+        if 'allowed_children' in node_settings and not self.valid_root_allowed_children(node_settings, node):
+            return False
 
     def valid_node_data(self, node, parent, child_index):
         node_settings = self.nodes_settings[node['pattern_key']]
@@ -147,6 +166,13 @@ class AstValidation:
     @staticmethod
     def valid_allowed_children(node_settings, node):
         for node_child in node['children']:
+            if node_child['pattern_key'] not in node_settings['allowed_children']:
+                raise SyntaxError('command block contains illegal code, line: ' + str(node_child['line_number']))
+        return True
+
+    @staticmethod
+    def valid_root_allowed_children(node_settings, node):
+        for node_child in node:
             if node_child['pattern_key'] not in node_settings['allowed_children']:
                 raise SyntaxError('command block contains illegal code, line: ' + str(node_child['line_number']))
         return True
