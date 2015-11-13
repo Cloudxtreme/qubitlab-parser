@@ -21,13 +21,18 @@ cbits = qreg.measure(1, 2)
 output = bob(qreg)
 
 print
+print "-- psi --"
+print
+print psi.dirac()
+print
+print
 print "-- cbits --"
 print
-print cbits
+print cbits.dirac()
 print
 print
 print "-- input --"
 print
-print input
+print input.dirac()
 print
 print
